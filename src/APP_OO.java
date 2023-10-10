@@ -13,7 +13,8 @@ public class APP_OO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Tela_Usuario t_u = new Tela_Usuario();
+        t_u.setVisible(true);
     }
     
 }
