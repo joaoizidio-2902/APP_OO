@@ -13,8 +13,17 @@ public class APP_OO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Tela_Usuario t_u = new Tela_Usuario();
-        t_u.setVisible(true);
+        Tela_Login t_l = new Tela_Login();
+        Tela_Perfil t_p = new Tela_Perfil(); 
+        Tela_Cadastro_Usuario t_c_u = new Tela_Cadastro_Usuario();
+        Tela_Listar_Carros t_l_c = new Tela_Listar_Carros();
+        Tela_Criar_Automovel t_c_a = new Tela_Criar_Automovel();
+        
+        t_l.setVisible(true);
+        t_p.setVisible(true);
+        t_c_u.setVisible(true);
+        t_l_c.setVisible(true);
+        t_c_a.setVisible(true);
     }
     
 }
