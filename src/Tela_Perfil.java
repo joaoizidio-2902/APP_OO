@@ -37,6 +37,7 @@ public class Tela_Perfil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        EditarP_Button.setBorderPainted(false);
         EditarP_Button.setContentAreaFilled(false);
         EditarP_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         EditarP_Button.addActionListener(new java.awt.event.ActionListener() {
@@ -46,25 +47,31 @@ public class Tela_Perfil extends javax.swing.JFrame {
         });
         getContentPane().add(EditarP_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 130, 30));
 
+        AlterarS_Button.setBorderPainted(false);
         AlterarS_Button.setContentAreaFilled(false);
         AlterarS_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(AlterarS_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 130, 40));
 
-        Email_Label.setForeground(new java.awt.Color(0, 0, 0));
         Email_Label.setText("[email]");
         getContentPane().add(Email_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 80, 30));
 
-        Nome_Label.setForeground(new java.awt.Color(0, 0, 0));
         Nome_Label.setText("[nome]");
         getContentPane().add(Nome_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 120, 30));
 
+        EcerrarSessão_Button.setBorderPainted(false);
         EcerrarSessão_Button.setContentAreaFilled(false);
         EcerrarSessão_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        EcerrarSessão_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EcerrarSessão_ButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(EcerrarSessão_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 160, 40));
 
         jButton1.setBackground(new java.awt.Color(245, 245, 245));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Voltar");
+        jButton1.setBorderPainted(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -85,9 +92,16 @@ public class Tela_Perfil extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void EditarP_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarP_ButtonActionPerformed
+        this.setVisible(false);
         Tela_Cadastro_Usuario t_c_u = new Tela_Cadastro_Usuario();
         t_c_u.setVisible(true);
     }//GEN-LAST:event_EditarP_ButtonActionPerformed
+
+    private void EcerrarSessão_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EcerrarSessão_ButtonActionPerformed
+        this.setVisible(false);
+        Tela_Login t_l = new Tela_Login();
+        t_l.setVisible(true);
+    }//GEN-LAST:event_EcerrarSessão_ButtonActionPerformed
 
     /**
      * @param args the command line arguments

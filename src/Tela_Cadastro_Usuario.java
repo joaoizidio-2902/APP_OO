@@ -45,14 +45,16 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
         Tela_Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(370, 844));
-        setSize(new java.awt.Dimension(375, 844));
+        setMinimumSize(new java.awt.Dimension(370, 660));
+        setSize(new java.awt.Dimension(375, 660));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Photo_Alter.setBorderPainted(false);
         Photo_Alter.setContentAreaFilled(false);
         Photo_Alter.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(Photo_Alter, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 170, 40));
+        getContentPane().add(Photo_Alter, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 170, 40));
 
+        Continue_Button.setBorderPainted(false);
         Continue_Button.setContentAreaFilled(false);
         Continue_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Continue_Button.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -68,10 +70,9 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
         getContentPane().add(Continue_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, 170, 40));
 
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 120, 130));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 120, 130));
 
         Name_Field.setBackground(new java.awt.Color(245, 245, 245));
-        Name_Field.setForeground(new java.awt.Color(0, 0, 0));
         Name_Field.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         Name_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,30 +82,35 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
         getContentPane().add(Name_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 280, 30));
 
         Email_Field.setBackground(new java.awt.Color(245, 245, 245));
-        Email_Field.setForeground(new java.awt.Color(0, 0, 0));
+        Email_Field.setMinimumSize(new java.awt.Dimension(500, 22));
+        Email_Field.setPreferredSize(new java.awt.Dimension(500, 22));
         Email_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Email_FieldActionPerformed(evt);
             }
         });
-        getContentPane().add(Email_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 280, 30));
+        getContentPane().add(Email_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 280, 30));
 
         Password_Field.setBackground(new java.awt.Color(245, 245, 245));
-        Password_Field.setForeground(new java.awt.Color(0, 0, 0));
-        Password_Field.setText("jPasswordField1");
+        Password_Field.setPreferredSize(new java.awt.Dimension(64, 22));
         Password_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Password_FieldActionPerformed(evt);
             }
         });
-        getContentPane().add(Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 280, -1));
+        getContentPane().add(Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 280, 30));
 
         Confirm_Password_Field.setBackground(new java.awt.Color(245, 245, 245));
-        Confirm_Password_Field.setForeground(new java.awt.Color(0, 0, 0));
-        Confirm_Password_Field.setText("jPasswordField1");
-        getContentPane().add(Confirm_Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 280, -1));
+        Confirm_Password_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Confirm_Password_FieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Confirm_Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 512, 280, 30));
 
         Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Usuario.jpg"))); // NOI18N
+        Tela_Background.setRequestFocusEnabled(false);
+        Tela_Background.setVerifyInputWhenFocusTarget(false);
         getContentPane().add(Tela_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 660));
 
         pack();
@@ -174,6 +180,10 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }//GEN-LAST:event_Continue_ButtonMouseClicked
+
+    private void Confirm_Password_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Confirm_Password_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Confirm_Password_FieldActionPerformed
 
     /**
      * @param args the command line arguments

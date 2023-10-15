@@ -20,7 +20,7 @@ public class Conexao {
 
             Class.forName("com.mysql.jbdc.Driver");
 
-            String url = "jdbc:mysql://localhost:3306/aplicacao?useSSL=fals";
+            String url = "jdbc:mysql://localhost:3306/aplicacao?useSSL=false";
             String user = "root";
             String password = "";
 

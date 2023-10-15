@@ -23,7 +23,7 @@ public class APP_OO {
          * Tela_Criar_Automovel t_c_a = new Tela_Criar_Automovel();
          */
         Tela_Cadastro_Usuario t_c_u = new Tela_Cadastro_Usuario();
-        t_c_u.setVisible(true);
+        //t_c_u.setVisible(true);
         t_l.setVisible(true);
 
     }

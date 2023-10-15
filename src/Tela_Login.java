@@ -45,7 +45,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 Email_FieldActionPerformed(evt);
             }
         });
-        getContentPane().add(Email_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 270, 30));
+        getContentPane().add(Email_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 270, 30));
 
         Password_Field.setBackground(new java.awt.Color(245, 245, 245));
         Password_Field.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -55,12 +55,17 @@ public class Tela_Login extends javax.swing.JFrame {
                 Password_FieldActionPerformed(evt);
             }
         });
-        getContentPane().add(Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 270, 30));
+        getContentPane().add(Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 270, 30));
 
         EsqueceuC_Button.setBorderPainted(false);
         EsqueceuC_Button.setContentAreaFilled(false);
         EsqueceuC_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(EsqueceuC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 130, 20));
+        EsqueceuC_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EsqueceuC_ButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EsqueceuC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 130, 20));
 
         CriarC_Button.setBorderPainted(false);
         CriarC_Button.setContentAreaFilled(false);
@@ -70,7 +75,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 CriarC_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CriarC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 90, 20));
+        getContentPane().add(CriarC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 90, 20));
 
         Login_Button.setBorderPainted(false);
         Login_Button.setContentAreaFilled(false);
@@ -80,7 +85,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 Login_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(Login_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 140, 50));
+        getContentPane().add(Login_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 140, 50));
 
         EsqueceuS_Button.setBorderPainted(false);
         EsqueceuS_Button.setContentAreaFilled(false);
@@ -95,7 +100,7 @@ public class Tela_Login extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Login.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setPreferredSize(new java.awt.Dimension(375, 844));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -90, 380, 660));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 660));
 
         pack();
         setLocationRelativeTo(null);
@@ -106,7 +111,8 @@ public class Tela_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_Email_FieldActionPerformed
 
     private void CriarC_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CriarC_ButtonActionPerformed
-      Tela_Cadastro_Usuario t_c_a = new Tela_Cadastro_Usuario();
+      this.setVisible(false);
+        Tela_Cadastro_Usuario t_c_a = new Tela_Cadastro_Usuario();
       t_c_a.setVisible(true);
       
     }//GEN-LAST:event_CriarC_ButtonActionPerformed
@@ -121,9 +127,13 @@ public class Tela_Login extends javax.swing.JFrame {
 
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
         this.setVisible(false);
-        Tela_Criar_Automovel t_c_a = new Tela_Criar_Automovel();
-        t_c_a.setVisible(true);
+        Tela_Listar_Carros t_l_c = new Tela_Listar_Carros();
+        t_l_c.setVisible(true);
     }//GEN-LAST:event_Login_ButtonActionPerformed
+
+    private void EsqueceuC_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EsqueceuC_ButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EsqueceuC_ButtonActionPerformed
 
     /**
      * @param args the command line arguments

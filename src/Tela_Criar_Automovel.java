@@ -35,6 +35,7 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        CadastrarA_Button.setBorderPainted(false);
         CadastrarA_Button.setContentAreaFilled(false);
         CadastrarA_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CadastrarA_Button.addActionListener(new java.awt.event.ActionListener() {
@@ -42,23 +43,17 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
                 CadastrarA_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CadastrarA_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 380, 110));
+        getContentPane().add(CadastrarA_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 370, 110));
 
         Modelo_Field.setBackground(new java.awt.Color(245, 245, 245));
-        Modelo_Field.setForeground(new java.awt.Color(0, 0, 0));
-        Modelo_Field.setText("jTextField1");
         Modelo_Field.setDisabledTextColor(new java.awt.Color(245, 245, 245));
-        getContentPane().add(Modelo_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 280, -1));
+        getContentPane().add(Modelo_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 280, 30));
 
         Placa_Field.setBackground(new java.awt.Color(245, 245, 245));
-        Placa_Field.setForeground(new java.awt.Color(0, 0, 0));
-        Placa_Field.setText("jTextField2");
-        getContentPane().add(Placa_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 280, -1));
+        getContentPane().add(Placa_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 280, 30));
 
         Quilometragem_Field.setBackground(new java.awt.Color(245, 245, 245));
-        Quilometragem_Field.setForeground(new java.awt.Color(0, 0, 0));
-        Quilometragem_Field.setText("jTextField3");
-        getContentPane().add(Quilometragem_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 280, -1));
+        getContentPane().add(Quilometragem_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 280, 30));
 
         Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Add_Carro.jpg"))); // NOI18N
         Tela_Background.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -68,6 +63,7 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CadastrarA_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarA_ButtonActionPerformed
+        this.setVisible(false);
         Tela_Listar_Carros t_c_l = new Tela_Listar_Carros();
         t_c_l.setVisible(true);
     }//GEN-LAST:event_CadastrarA_ButtonActionPerformed
