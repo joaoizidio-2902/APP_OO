@@ -1,9 +1,18 @@
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
-
 /**
  *
  * @author cg3023087
@@ -46,12 +55,17 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
 
         Continue_Button.setContentAreaFilled(false);
         Continue_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Continue_Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Continue_ButtonMouseClicked(evt);
+            }
+        });
         Continue_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Continue_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(Continue_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 740, 180, 50));
+        getContentPane().add(Continue_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, 170, 40));
 
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 120, 130));
@@ -59,11 +73,21 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
         Name_Field.setBackground(new java.awt.Color(245, 245, 245));
         Name_Field.setForeground(new java.awt.Color(0, 0, 0));
         Name_Field.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        getContentPane().add(Name_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 355, 280, 30));
+        Name_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Name_FieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Name_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 280, 30));
 
         Email_Field.setBackground(new java.awt.Color(245, 245, 245));
         Email_Field.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(Email_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 456, 280, 30));
+        Email_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Email_FieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Email_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 280, 30));
 
         Password_Field.setBackground(new java.awt.Color(245, 245, 245));
         Password_Field.setForeground(new java.awt.Color(0, 0, 0));
@@ -73,28 +97,83 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
                 Password_FieldActionPerformed(evt);
             }
         });
-        getContentPane().add(Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 280, -1));
+        getContentPane().add(Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 280, -1));
 
         Confirm_Password_Field.setBackground(new java.awt.Color(245, 245, 245));
         Confirm_Password_Field.setForeground(new java.awt.Color(0, 0, 0));
         Confirm_Password_Field.setText("jPasswordField1");
-        getContentPane().add(Confirm_Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 640, 280, -1));
+        getContentPane().add(Confirm_Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 280, -1));
 
-        Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Usuario.png"))); // NOI18N
-        getContentPane().add(Tela_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 820));
+        Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Usuario.jpg"))); // NOI18N
+        getContentPane().add(Tela_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 660));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Continue_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Continue_ButtonActionPerformed
-        Tela_Criar_Automovel t_c_a = new Tela_Criar_Automovel();
-        t_c_a.setVisible(true);
+        this.setVisible(false);
+        
+        /*Tela_Criar_Automovel t_c_a = new Tela_Criar_Automovel();
+        t_c_a.setVisible(true);*/ 
+        
+        Tela_Perfil t_p = new Tela_Perfil();
+        t_p.setVisible(true);
+
     }//GEN-LAST:event_Continue_ButtonActionPerformed
 
     private void Password_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Password_FieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Password_FieldActionPerformed
+
+    private void Email_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Email_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Email_FieldActionPerformed
+
+    private void Name_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Name_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Name_FieldActionPerformed
+
+    Connection con;
+    private void Continue_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Continue_ButtonMouseClicked
+        String nome = Name_Field.getText();
+        String email = Email_Field.getText();
+        char[] senha = Password_Field.getPassword();
+        char[] conf_senha = Confirm_Password_Field.getPassword();
+
+        // Calcula o hash SHA-256 da senha
+        String senhaHash = "";
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] senhaBytes = md.digest(new String(senha).getBytes("UTF-8"));
+            senhaHash = new String(Utils.hexRepresentation(senhaBytes));
+        } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
+            Logger.getLogger(Tela_Cadastro_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String query = "INSERT INTO Usuario (nome_usuario, email_usuario, senha_usuario) VALUES (?, ?, ?)";
+        PreparedStatement ps;
+
+        try {
+            con = Conexao.getConnection();
+            con.setAutoCommit(false);
+
+            ps = con.prepareStatement(query);
+
+            ps.setString(1, nome);
+            ps.setString(2, email);
+            ps.setString(3, senhaHash);
+            ps.execute();
+
+            con.commit();
+            ps.close();
+
+            JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso!");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }//GEN-LAST:event_Continue_ButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -125,6 +204,7 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Tela_Cadastro_Usuario().setVisible(true);
             }

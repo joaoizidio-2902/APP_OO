@@ -39,30 +39,30 @@ public class Tela_Login extends javax.swing.JFrame {
         Email_Field.setBackground(new java.awt.Color(245, 245, 245));
         Email_Field.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Email_Field.setDisabledTextColor(new java.awt.Color(245, 245, 245));
-        Email_Field.setOpaque(true);
         Email_Field.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         Email_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Email_FieldActionPerformed(evt);
             }
         });
-        getContentPane().add(Email_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 270, 30));
+        getContentPane().add(Email_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 270, 30));
 
         Password_Field.setBackground(new java.awt.Color(245, 245, 245));
         Password_Field.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        Password_Field.setOpaque(true);
         Password_Field.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         Password_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Password_FieldActionPerformed(evt);
             }
         });
-        getContentPane().add(Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 435, 270, 30));
+        getContentPane().add(Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 270, 30));
 
+        EsqueceuC_Button.setBorderPainted(false);
         EsqueceuC_Button.setContentAreaFilled(false);
         EsqueceuC_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(EsqueceuC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 160, 30));
+        getContentPane().add(EsqueceuC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 130, 20));
 
+        CriarC_Button.setBorderPainted(false);
         CriarC_Button.setContentAreaFilled(false);
         CriarC_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CriarC_Button.addActionListener(new java.awt.event.ActionListener() {
@@ -70,8 +70,9 @@ public class Tela_Login extends javax.swing.JFrame {
                 CriarC_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CriarC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 120, 30));
+        getContentPane().add(CriarC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 90, 20));
 
+        Login_Button.setBorderPainted(false);
         Login_Button.setContentAreaFilled(false);
         Login_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Login_Button.addActionListener(new java.awt.event.ActionListener() {
@@ -79,8 +80,9 @@ public class Tela_Login extends javax.swing.JFrame {
                 Login_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(Login_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 150, 50));
+        getContentPane().add(Login_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 140, 50));
 
+        EsqueceuS_Button.setBorderPainted(false);
         EsqueceuS_Button.setContentAreaFilled(false);
         EsqueceuS_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         EsqueceuS_Button.addActionListener(new java.awt.event.ActionListener() {
@@ -88,12 +90,12 @@ public class Tela_Login extends javax.swing.JFrame {
                 EsqueceuS_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(EsqueceuS_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 650, 210, 30));
+        getContentPane().add(EsqueceuS_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 190, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Login.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setPreferredSize(new java.awt.Dimension(375, 844));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 377, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -90, 380, 660));
 
         pack();
         setLocationRelativeTo(null);
@@ -118,6 +120,7 @@ public class Tela_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_EsqueceuS_ButtonActionPerformed
 
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
+        this.setVisible(false);
         Tela_Criar_Automovel t_c_a = new Tela_Criar_Automovel();
         t_c_a.setVisible(true);
     }//GEN-LAST:event_Login_ButtonActionPerformed

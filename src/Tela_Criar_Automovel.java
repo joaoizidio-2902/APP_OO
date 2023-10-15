@@ -42,7 +42,7 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
                 CadastrarA_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CadastrarA_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 380, 130));
+        getContentPane().add(CadastrarA_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 380, 110));
 
         Modelo_Field.setBackground(new java.awt.Color(245, 245, 245));
         Modelo_Field.setForeground(new java.awt.Color(0, 0, 0));
@@ -53,16 +53,16 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
         Placa_Field.setBackground(new java.awt.Color(245, 245, 245));
         Placa_Field.setForeground(new java.awt.Color(0, 0, 0));
         Placa_Field.setText("jTextField2");
-        getContentPane().add(Placa_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 325, 280, -1));
+        getContentPane().add(Placa_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 280, -1));
 
         Quilometragem_Field.setBackground(new java.awt.Color(245, 245, 245));
         Quilometragem_Field.setForeground(new java.awt.Color(0, 0, 0));
         Quilometragem_Field.setText("jTextField3");
-        getContentPane().add(Quilometragem_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 465, 280, -1));
+        getContentPane().add(Quilometragem_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 280, -1));
 
-        Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Add_Carro.png"))); // NOI18N
+        Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Add_Carro.jpg"))); // NOI18N
         Tela_Background.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().add(Tela_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 378, 720));
+        getContentPane().add(Tela_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
