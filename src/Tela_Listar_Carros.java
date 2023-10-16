@@ -67,8 +67,14 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
         IrPerfil_Button.setBorderPainted(false);
         IrPerfil_Button.setContentAreaFilled(false);
+        IrPerfil_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         IrPerfil_Button.setFocusPainted(false);
         IrPerfil_Button.setFocusable(false);
+        IrPerfil_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IrPerfil_ButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(IrPerfil_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 50, 50));
 
         ProxCarro_Button.setBorderPainted(false);
@@ -101,6 +107,12 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
     private void ProxCarro_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProxCarro_ButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ProxCarro_ButtonActionPerformed
+
+    private void IrPerfil_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrPerfil_ButtonActionPerformed
+        Tela_Perfil t_f = new Tela_Perfil();
+        t_f.setVisible(true);
+        
+    }//GEN-LAST:event_IrPerfil_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
