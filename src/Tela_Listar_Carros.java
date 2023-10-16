@@ -29,14 +29,11 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        Tela_Background = new javax.swing.JLabel();
+        IrPerfil_Button = new javax.swing.JButton();
+        ProxCarro_Button = new javax.swing.JButton();
+        AnteCarro_Button = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -60,35 +57,37 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 560, 60, 60));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 560, 70, 60));
 
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
 
-        jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
-
-        jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
-
-        jLabel5.setText("jLabel5");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
-
-        jLabel6.setText("jLabel6");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
-
-        jLabel7.setText("jLabel7");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, -1, -1));
-
         jLabel8.setText("jLabel8");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
 
-        jLabel9.setText("jLabel9");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, -1, -1));
+        IrPerfil_Button.setBorderPainted(false);
+        IrPerfil_Button.setContentAreaFilled(false);
+        IrPerfil_Button.setFocusPainted(false);
+        IrPerfil_Button.setFocusable(false);
+        getContentPane().add(IrPerfil_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 50, 50));
 
-        Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Listar_Carros.jpg"))); // NOI18N
-        Tela_Background.setText("jLabel1");
-        getContentPane().add(Tela_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 375, 660));
+        ProxCarro_Button.setBorderPainted(false);
+        ProxCarro_Button.setContentAreaFilled(false);
+        ProxCarro_Button.setFocusable(false);
+        ProxCarro_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProxCarro_ButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ProxCarro_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 40, 30));
+
+        AnteCarro_Button.setBorderPainted(false);
+        AnteCarro_Button.setContentAreaFilled(false);
+        AnteCarro_Button.setFocusable(false);
+        getContentPane().add(AnteCarro_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 40, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Listar_Carros.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 380, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -98,6 +97,10 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         Tela_Criar_Automovel t_c_a = new Tela_Criar_Automovel();
         t_c_a.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ProxCarro_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProxCarro_ButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProxCarro_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,16 +138,13 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Tela_Background;
+    private javax.swing.JButton AnteCarro_Button;
+    private javax.swing.JButton IrPerfil_Button;
+    private javax.swing.JButton ProxCarro_Button;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
