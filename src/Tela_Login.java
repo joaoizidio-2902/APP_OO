@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Tela_Login extends javax.swing.JFrame {
 
-    private ArrayList<Usuario> bd;
+    private ArrayList<Usuario> Banco_Dados_Usuario;
     /**
      * Creates new form Tela_Login
      */
@@ -20,9 +20,9 @@ public class Tela_Login extends javax.swing.JFrame {
         initComponents();
     }
 
-    public Tela_Login(ArrayList<Usuario> bd) {
+    public Tela_Login(ArrayList<Usuario> Banco_Dados_Usuario) {
         initComponents();
-        this.bd = bd;
+        this.Banco_Dados_Usuario = Banco_Dados_Usuario;
     }
     
     /**
@@ -120,9 +120,9 @@ public class Tela_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_Email_FieldActionPerformed
 
     private void CriarC_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CriarC_ButtonActionPerformed
-      this.setVisible(false);
+        this.setVisible(false);
         Tela_Cadastro_Usuario t_c_a = new Tela_Cadastro_Usuario();
-      t_c_a.setVisible(true);
+        t_c_a.setVisible(true);
       
     }//GEN-LAST:event_CriarC_ButtonActionPerformed
 
@@ -136,7 +136,7 @@ public class Tela_Login extends javax.swing.JFrame {
 
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
         this.setVisible(false);
-        Tela_Listar_Carros t_l_c = new Tela_Listar_Carros();
+        Tela_Listar_Carros t_l_c = new Tela_Listar_Carros(this.Email_Field.getText());
         t_l_c.setVisible(true);
     }//GEN-LAST:event_Login_ButtonActionPerformed
 

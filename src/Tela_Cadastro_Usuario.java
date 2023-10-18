@@ -16,34 +16,23 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-/**
- *
- * @author cg3023087
- */
+
+
 public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
-     private ArrayList<Usuario> bd;
+     private ArrayList<Usuario> Banco_Dados_Usuario = new ArrayList<Usuario>();
      public ImageIcon image;
-    /**
-     * Creates new form Tela_Cadastro_Usuario
-     */
+    
+     
     public Tela_Cadastro_Usuario() {
         initComponents();
-    }
-    public Tela_Cadastro_Usuario(ArrayList<Usuario> bd) {
-        initComponents();
-        this.bd = bd;
     }
     
     private void escrever_arquivo() throws IOException {
 
         String arquivo = "BancoDeDados.txt";
         BufferedWriter buffWrite = new BufferedWriter(new FileWriter(arquivo,/* StandardCharsets.ISO_8859_1,*/ true));
-        for (int i = 0; i < this.bd.size(); i++) {
-            String dados = this.bd.get(i).toString()/*.getNome_usuario() + ";" + this.bd.get(i).getEmail_usuario() + ";" + this.bd.get(i).getSenha_usuario() + ";" + this.bd.get(i).Foto_Pessoa.*/;
+        for (int i = 0; i < this.Banco_Dados_Usuario.size(); i++) {
+            String dados = this.Banco_Dados_Usuario.get(i).getNome_usuario() + ";" + this.Banco_Dados_Usuario.get(i).getEmail_usuario() + ";" + this.Banco_Dados_Usuario.get(i).getSenha_usuario();
             buffWrite.append(dados + "\n");
         }
 
@@ -147,12 +136,15 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Continue_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Continue_ButtonActionPerformed
+        
         if (this.Password_Field.getText().equals(this.Confirm_Password_Field.getText())) {
+            
+            
             //Instanciar Usuario
-            Usuario cadastro = new Usuario(this.Name_Field.getText(), this.Email_Field.getText(), this.Password_Field.getText(), this.image);
+            Usuario cadastro = new Usuario(this.Name_Field.getText(), this.Email_Field.getText(), this.Password_Field.getText()/*, this.image*/);
 
-            //Adicionar no /arrayList
-            this.bd.add(cadastro);
+            //Adicionar no ArrayList
+            this.Banco_Dados_Usuario.add(cadastro);
             try {
                 //Escrever
                 escrever_arquivo();
@@ -160,11 +152,13 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
                 System.out.println(e.getCause());
             }
 
+            // Fechar janela
             this.setVisible(false);
-
-            /*Tela_Criar_Automovel t_c_a = new Tela_Criar_Automovel();
-            t_c_a.setVisible(true);*/
-            Tela_Perfil t_p = new Tela_Perfil();
+            
+            //Email de referencia para saber qual esta logado
+            String Email_Usuario_Logado = this.Email_Field.getText();
+            
+            Tela_Perfil t_p = new Tela_Perfil(Email_Usuario_Logado);
             t_p.setVisible(true);
         }else System.out.println("senhas n batem");
 

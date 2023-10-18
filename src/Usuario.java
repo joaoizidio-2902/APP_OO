@@ -12,13 +12,13 @@ public class Usuario {
     private String telefone_usuario;
     private String cpf_usuario;
     private String senha_usuario;
-    ImageIcon Foto_Pessoa;
+    //ImageIcon Foto_Pessoa;
 
-    public Usuario(String nome_usuario, String email_usuario, String senha_usuario, ImageIcon Foto_Pessoa) {
+    public Usuario(String nome_usuario, String email_usuario, String senha_usuario/*, ImageIcon Foto_Pessoa*/) {
         this.nome_usuario = nome_usuario;
         this.email_usuario = email_usuario;
         this.senha_usuario = senha_usuario;
-        this.Foto_Pessoa = Foto_Pessoa;
+        /*this.Foto_Pessoa = Foto_Pessoa;*/
     }
 
     /**
