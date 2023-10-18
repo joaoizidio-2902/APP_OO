@@ -146,6 +146,8 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
     }//GEN-LAST:event_ProxCarro_ButtonActionPerformed
 
     private void IrPerfil_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrPerfil_ButtonActionPerformed
+        this.setVisible(false);
+        System.out.println(getEmail_Usuario_Logado());
         Tela_Perfil t_f = new Tela_Perfil(getEmail_Usuario_Logado());
         t_f.setVisible(true);
 

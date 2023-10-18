@@ -5,9 +5,8 @@ import java.util.ArrayList;
 public class APP_OO {
 
     /*
-    Criar variavel de qual login esta logado
-    Criar classe carro
-    
+        Criar variavel de qual login esta logado ------ OK
+        Criar classe carro
     */
     
     public static void main(String[] args) {

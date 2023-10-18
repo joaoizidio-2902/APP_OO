@@ -87,7 +87,7 @@ public class Tela_Perfil extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        Tela_Listar_Carros t_l_c = new Tela_Listar_Carros();
+        Tela_Listar_Carros t_l_c = new Tela_Listar_Carros(Email_Usuario_Logado);
         t_l_c.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

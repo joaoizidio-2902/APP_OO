@@ -1,11 +1,12 @@
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author joaoi
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 public class Tela_Login extends javax.swing.JFrame {
 
     private ArrayList<Usuario> Banco_Dados_Usuario;
+
     /**
      * Creates new form Tela_Login
      */
@@ -24,7 +26,7 @@ public class Tela_Login extends javax.swing.JFrame {
         initComponents();
         this.Banco_Dados_Usuario = Banco_Dados_Usuario;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -123,7 +125,7 @@ public class Tela_Login extends javax.swing.JFrame {
         this.setVisible(false);
         Tela_Cadastro_Usuario t_c_a = new Tela_Cadastro_Usuario();
         t_c_a.setVisible(true);
-      
+
     }//GEN-LAST:event_CriarC_ButtonActionPerformed
 
     private void Password_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Password_FieldActionPerformed
@@ -135,9 +137,24 @@ public class Tela_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_EsqueceuS_ButtonActionPerformed
 
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
-        this.setVisible(false);
-        Tela_Listar_Carros t_l_c = new Tela_Listar_Carros(this.Email_Field.getText());
-        t_l_c.setVisible(true);
+        try {
+            String Nome_Arquivo = "BancoDeDados.txt";
+            BufferedReader Linha_Lida = new BufferedReader(new FileReader(Nome_Arquivo));
+            String Detalhes_Usuarios[] = new String[3];
+
+            while ((Linha_Lida.readLine()) != null) {
+                Detalhes_Usuarios = Linha_Lida.readLine().split(";");
+                if (this.Email_Field.getText().equals(Detalhes_Usuarios[1]) && this.Password_Field.getText().equals(Detalhes_Usuarios[2])) {
+                    this.setVisible(false);
+                    Tela_Listar_Carros t_l_c = new Tela_Listar_Carros(this.Email_Field.getText());
+                    t_l_c.setVisible(true);
+                } else {
+                    System.out.println("n foi");
+                }
+            }
+        } catch (Exception e) {
+        }
+
     }//GEN-LAST:event_Login_ButtonActionPerformed
 
     private void EsqueceuC_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EsqueceuC_ButtonActionPerformed
