@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,6 +12,7 @@
  */
 public class Tela_Login extends javax.swing.JFrame {
 
+    private ArrayList<Usuario> bd;
     /**
      * Creates new form Tela_Login
      */
@@ -16,6 +20,11 @@ public class Tela_Login extends javax.swing.JFrame {
         initComponents();
     }
 
+    public Tela_Login(ArrayList<Usuario> bd) {
+        initComponents();
+        this.bd = bd;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -164,6 +173,7 @@ public class Tela_Login extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Tela_Login().setVisible(true);
             }

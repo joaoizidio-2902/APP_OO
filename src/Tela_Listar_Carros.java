@@ -1,3 +1,7 @@
+
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,6 +19,20 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
      */
     public Tela_Listar_Carros() {
         initComponents();
+        try {
+            String caminho_foto = "vista-do-carro-3d.jpg";
+            ImageIcon imagem = new ImageIcon(caminho_foto);
+            this.jLabel5.setIcon(imagem);
+
+            Image img = imagem.getImage();
+            Image img_temp = img.getScaledInstance(this.jLabel5.getWidth(), this.jLabel5.getHeight(), java.awt.Image.SCALE_SMOOTH);
+
+            imagem = new ImageIcon(img_temp);
+            this.jLabel5.setIcon(imagem);
+            //this. = imagem;
+
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -32,8 +50,9 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         IrPerfil_Button = new javax.swing.JButton();
         ProxCarro_Button = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         AnteCarro_Button = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        Tela_Background = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,13 +106,16 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         });
         getContentPane().add(ProxCarro_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 40, 30));
 
+        jLabel5.setText("jLabel5");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
+
         AnteCarro_Button.setBorderPainted(false);
         AnteCarro_Button.setContentAreaFilled(false);
         AnteCarro_Button.setFocusable(false);
         getContentPane().add(AnteCarro_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 40, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Listar_Carros.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 380, 670));
+        Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Listar_Carros.jpg"))); // NOI18N
+        getContentPane().add(Tela_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 380, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -153,9 +175,10 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
     private javax.swing.JButton AnteCarro_Button;
     private javax.swing.JButton IrPerfil_Button;
     private javax.swing.JButton ProxCarro_Button;
+    private javax.swing.JLabel Tela_Background;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
