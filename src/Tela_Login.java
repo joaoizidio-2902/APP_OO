@@ -148,9 +148,7 @@ public class Tela_Login extends javax.swing.JFrame {
                     this.setVisible(false);
                     Tela_Listar_Carros t_l_c = new Tela_Listar_Carros(this.Email_Field.getText());
                     t_l_c.setVisible(true);
-                } else {
-                    System.out.println("n foi");
-                }
+                } 
             }
         } catch (Exception e) {
         }

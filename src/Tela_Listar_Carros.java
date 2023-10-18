@@ -18,13 +18,13 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         try {
             String caminho_foto = "vista-do-carro-3d.jpg";
             ImageIcon imagem = new ImageIcon(caminho_foto);
-            this.jLabel5.setIcon(imagem);
+            this.Campo_Foto.setIcon(imagem);
 
             Image img = imagem.getImage();
-            Image img_temp = img.getScaledInstance(this.jLabel5.getWidth(), this.jLabel5.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            Image img_temp = img.getScaledInstance(this.Campo_Foto.getWidth(), this.Campo_Foto.getHeight(), java.awt.Image.SCALE_SMOOTH);
 
             imagem = new ImageIcon(img_temp);
-            this.jLabel5.setIcon(imagem);
+            this.Campo_Foto.setIcon(imagem);
             //this. = imagem;
 
         } catch (Exception e) {
@@ -38,13 +38,13 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         try {
             String caminho_foto = "vista-do-carro-3d.jpg";
             ImageIcon imagem = new ImageIcon(caminho_foto);
-            this.jLabel5.setIcon(imagem);
+            this.Campo_Foto.setIcon(imagem);
 
             Image img = imagem.getImage();
-            Image img_temp = img.getScaledInstance(this.jLabel5.getWidth(), this.jLabel5.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            Image img_temp = img.getScaledInstance(this.Campo_Foto.getWidth(), this.Campo_Foto.getHeight(), java.awt.Image.SCALE_SMOOTH);
 
             imagem = new ImageIcon(img_temp);
-            this.jLabel5.setIcon(imagem);
+            this.Campo_Foto.setIcon(imagem);
             //this. = imagem;
 
         } catch (Exception e) {
@@ -65,7 +65,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         IrPerfil_Button = new javax.swing.JButton();
         ProxCarro_Button = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        Campo_Foto = new javax.swing.JLabel();
         AnteCarro_Button = new javax.swing.JButton();
         Tela_Background = new javax.swing.JLabel();
 
@@ -91,13 +91,13 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 560, 70, 60));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 560, 70, 70));
 
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
         jLabel8.setText("jLabel8");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
 
         IrPerfil_Button.setBorderPainted(false);
         IrPerfil_Button.setContentAreaFilled(false);
@@ -120,9 +120,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ProxCarro_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 40, 30));
-
-        jLabel5.setText("jLabel5");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
+        getContentPane().add(Campo_Foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 100, 90));
 
         AnteCarro_Button.setBorderPainted(false);
         AnteCarro_Button.setContentAreaFilled(false);
@@ -190,12 +188,12 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AnteCarro_Button;
+    private javax.swing.JLabel Campo_Foto;
     private javax.swing.JButton IrPerfil_Button;
     private javax.swing.JButton ProxCarro_Button;
     private javax.swing.JLabel Tela_Background;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
