@@ -135,7 +135,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        Tela_Criar_Automovel t_c_a = new Tela_Criar_Automovel();
+        Tela_Criar_Automovel t_c_a = new Tela_Criar_Automovel(getEmail_Usuario_Logado());
         t_c_a.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -145,7 +145,6 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
     private void IrPerfil_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrPerfil_ButtonActionPerformed
         this.setVisible(false);
-        System.out.println(getEmail_Usuario_Logado());
         Tela_Perfil t_f = new Tela_Perfil(getEmail_Usuario_Logado());
         t_f.setVisible(true);
 
