@@ -137,9 +137,7 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
 
     private void Continue_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Continue_ButtonActionPerformed
         
-        if (this.Password_Field.getText().equals(this.Confirm_Password_Field.getText())) {
-            
-            
+        if (this.Password_Field.getText().equals(this.Confirm_Password_Field.getText())) {   
             //Instanciar Usuario
             Usuario cadastro = new Usuario(this.Name_Field.getText(), this.Email_Field.getText(), this.Password_Field.getText()/*, this.image*/);
 
@@ -158,7 +156,10 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
             //Email de referencia para saber qual esta logado
             String Email_Usuario_Logado = this.Email_Field.getText();
             
-            Tela_Perfil t_p = new Tela_Perfil(Email_Usuario_Logado);
+            //Nome de referencia para saber qual esta logado
+            String Nome_Usuario_Logado = this.Name_Field.getText();
+            
+            Tela_Perfil t_p = new Tela_Perfil(Email_Usuario_Logado, Nome_Usuario_Logado);
             t_p.setVisible(true);
         }else System.out.println("senhas n batem");
 

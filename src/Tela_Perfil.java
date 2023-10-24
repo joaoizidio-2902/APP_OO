@@ -10,15 +10,19 @@
  */
 public class Tela_Perfil extends javax.swing.JFrame {
     public String Email_Usuario_Logado;
+    public String Nome_Usuario_Logado;
     
     public Tela_Perfil() {
         initComponents();
     }
     
-    public Tela_Perfil(String Email_Usuario_Logado) {
+    public Tela_Perfil(String Email_Usuario_Logado, String Nome_Usuario_Logado) {
         initComponents();
         this.Email_Usuario_Logado = Email_Usuario_Logado;
+        this.Nome_Usuario_Logado = Nome_Usuario_Logado;
+        
         this.Email_Label.setText(this.Email_Usuario_Logado);
+        this.Nome_Label.setText(this.Nome_Usuario_Logado);
     }
 
     
@@ -31,7 +35,7 @@ public class Tela_Perfil extends javax.swing.JFrame {
         Email_Label = new javax.swing.JLabel();
         Nome_Label = new javax.swing.JLabel();
         EcerrarSessão_Button = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        Voltar_Button = new javax.swing.JButton();
         Tela_Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,9 +57,9 @@ public class Tela_Perfil extends javax.swing.JFrame {
         getContentPane().add(AlterarS_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 130, 40));
 
         Email_Label.setText("email");
-        getContentPane().add(Email_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 80, 30));
+        getContentPane().add(Email_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 120, 30));
 
-        Nome_Label.setText("[nome]");
+        Nome_Label.setText("nome");
         getContentPane().add(Nome_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 120, 30));
 
         EcerrarSessão_Button.setBorderPainted(false);
@@ -68,16 +72,16 @@ public class Tela_Perfil extends javax.swing.JFrame {
         });
         getContentPane().add(EcerrarSessão_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 160, 40));
 
-        jButton1.setBackground(new java.awt.Color(245, 245, 245));
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Voltar_Button.setBackground(new java.awt.Color(245, 245, 245));
+        Voltar_Button.setBorderPainted(false);
+        Voltar_Button.setContentAreaFilled(false);
+        Voltar_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Voltar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Voltar_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 40, 40));
+        getContentPane().add(Voltar_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 40, 40));
 
         Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Perfil.jpg"))); // NOI18N
         getContentPane().add(Tela_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 660));
@@ -85,11 +89,11 @@ public class Tela_Perfil extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Voltar_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Voltar_ButtonActionPerformed
         this.setVisible(false);
         Tela_Listar_Carros t_l_c = new Tela_Listar_Carros(Email_Usuario_Logado);
         t_l_c.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Voltar_ButtonActionPerformed
 
     private void EditarP_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarP_ButtonActionPerformed
         this.setVisible(false);
@@ -145,6 +149,6 @@ public class Tela_Perfil extends javax.swing.JFrame {
     private javax.swing.JLabel Email_Label;
     private javax.swing.JLabel Nome_Label;
     private javax.swing.JLabel Tela_Background;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Voltar_Button;
     // End of variables declaration//GEN-END:variables
 }
