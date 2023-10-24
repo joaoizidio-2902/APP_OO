@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
  */
 public class Tela_Listar_Carros extends javax.swing.JFrame {
     private String Email_Usuario_Logado;
+    private String Nome_Usuario_Logado;
     
     public Tela_Listar_Carros() {
         initComponents();
@@ -53,6 +54,10 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
     
     public String getEmail_Usuario_Logado() {
         return Email_Usuario_Logado;
+    }
+    
+    public String getNome_Usuario_Logado() {
+        return Nome_Usuario_Logado;
     }
 
     @SuppressWarnings("unchecked")
@@ -145,7 +150,8 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
     private void IrPerfil_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrPerfil_ButtonActionPerformed
         this.setVisible(false);
-        Tela_Perfil t_f = new Tela_Perfil(getEmail_Usuario_Logado());
+        System.out.println(getEmail_Usuario_Logado());
+        Tela_Perfil t_f = new Tela_Perfil(getEmail_Usuario_Logado(), getNome_Usuario_Logado());
         t_f.setVisible(true);
 
     }//GEN-LAST:event_IrPerfil_ButtonActionPerformed
