@@ -1,0 +1,11 @@
+
+caique@gmail.com;caique.a.gmail;321654
+Tulio Koogi;shaolinmatadordeporco@gmail.com;caiquecagagrosso
+joao;joao@gmail.com;321654987
+<<<<<<< HEAD:BancoDeDadosUsuarios.txt
+joao izidio;joaoizidio@gmail.com;12345
+caique;caique@gmail.com;321
+;;
+=======
+
+>>>>>>> 3b6f6f57f663d48e6f9b4417953f667c767a1ae1:BancoDeDados.txt

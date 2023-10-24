@@ -138,7 +138,7 @@ public class Tela_Login extends javax.swing.JFrame {
 
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
         try {
-            String Nome_Arquivo = "BancoDeDados.txt";
+            String Nome_Arquivo = "BancoDeDadosUsuarios.txt";
             BufferedReader Linha_Lida = new BufferedReader(new FileReader(Nome_Arquivo));
             String Detalhes_Usuarios[] = new String[3];
 

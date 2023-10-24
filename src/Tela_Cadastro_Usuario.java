@@ -29,7 +29,7 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
     
     private void escrever_arquivo() throws IOException {
 
-        String arquivo = "BancoDeDados.txt";
+        String arquivo = "BancoDeDadosUsuarios.txt";
         BufferedWriter buffWrite = new BufferedWriter(new FileWriter(arquivo,/* StandardCharsets.ISO_8859_1,*/ true));
         for (int i = 0; i < this.Banco_Dados_Usuario.size(); i++) {
             String dados = this.Banco_Dados_Usuario.get(i).getNome_usuario() + ";" + this.Banco_Dados_Usuario.get(i).getEmail_usuario() + ";" + this.Banco_Dados_Usuario.get(i).getSenha_usuario();
