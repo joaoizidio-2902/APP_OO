@@ -23,8 +23,8 @@ public class Tela_Login extends javax.swing.JFrame {
     }
 
     public Tela_Login(ArrayList<Usuario> Banco_Dados_Usuario) {
-        initComponents();
         this.Banco_Dados_Usuario = Banco_Dados_Usuario;
+        initComponents();
     }
 
     /**
