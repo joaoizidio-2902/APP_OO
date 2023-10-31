@@ -1,10 +1,11 @@
-<<<<<<< HEAD
 
 celta;spcar-666;3000;caique.a.gmail
 golf;caragua-2023;1000;tk@gmail.com
 corsa;ubatuba-2023;5000;null
-=======
 camaro;2a14drf;100000;caique@gmail.com
 porche;2a14drf;321654;caique@gmail.com
 siena;asdf654;95623;caique@gmail.com
->>>>>>> 63def8c94ac9556303ab21e5885b56bd94b03c45
+camaro;2a14drf;100000;caique@gmail.com
+porche;2a14drf;321654;caique@gmail.com
+siena;asdf654;95623;caique@gmail.com
+
