@@ -73,6 +73,25 @@ public class Conexao {
         ResultSet rs_Resultado = con.createStatement().executeQuery("select * from usuario where email_usuario like '" + Email_Usuario + "'");
         rs_Resultado.next();
         System.out.println(rs_Resultado.getString("nome_usuario"));
+        con.close();
+    }
+    
+    protected void Create_Car(String Marca, String Placa, float KM) throws SQLException {
+        //Ligar conexao
+        Enable_Connection();
+
+        // ResultSet faz a consulta
+        String sql ="insert into veiculo(veiculo_id, veiculo_marca, veiculo_placa, veiculo_km) values( 4, ?, ?, ?)";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, Marca);
+        pst.setString(2, Placa);
+        pst.setFloat(3, KM);
+        pst.execute();
+        
+        ResultSet rs_Resultado = con.createStatement().executeQuery("select * from veiculo where veiculo_marca like '" + Marca + "';");
+        rs_Resultado.next();
+        System.out.println(rs_Resultado.getString("veiculo_marca"));
+        con.close();
     }
 
 }
