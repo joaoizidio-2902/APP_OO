@@ -4,8 +4,12 @@ Tulio Koogi;shaolinmatadordeporco@gmail.com;caiquecagagrosso
 joao;joao@gmail.com;321654987
 joao izidio;joaoizidio@gmail.com;12345
 caique;caique@gmail.com;321
+<<<<<<< HEAD
 
 Tulio;tk@gmail.com;java
 ;;
 Tulio;tk@gmail.com;java123
 joaoizid;joao22@gmail;123456789
+=======
+;;
+>>>>>>> 63def8c94ac9556303ab21e5885b56bd94b03c45

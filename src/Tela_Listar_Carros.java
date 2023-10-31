@@ -1,5 +1,10 @@
 
 import java.awt.Image;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /*
@@ -11,9 +16,12 @@ import javax.swing.ImageIcon;
  * @author cg3023087
  */
 public class Tela_Listar_Carros extends javax.swing.JFrame {
+
     private String Email_Usuario_Logado;
     private String Nome_Usuario_Logado;
-    
+    ArrayList<Tipo_Carro> bd_tipo_carro = new ArrayList<Tipo_Carro>();
+    public int cont = 0;
+
     public Tela_Listar_Carros() {
         initComponents();
         try {
@@ -27,7 +35,6 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
             imagem = new ImageIcon(img_temp);
             this.Campo_Foto.setIcon(imagem);
             //this. = imagem;
-
         } catch (Exception e) {
         }
     }
@@ -37,6 +44,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         this.Email_Usuario_Logado = Email_Usuario_Logado;
 
         try {
+
             String caminho_foto = "vista-do-carro-3d.jpg";
             ImageIcon imagem = new ImageIcon(caminho_foto);
             this.Campo_Foto.setIcon(imagem);
@@ -48,14 +56,17 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
             this.Campo_Foto.setIcon(imagem);
             //this. = imagem;
 
+            LerArquivo();
+            this.Modelo_Field.setText(bd_tipo_carro.get(cont).getModelo_Carro());
+            this.Placa_Field.setText(bd_tipo_carro.get(cont).getPlaca_Carro());
         } catch (Exception e) {
         }
     }
-    
+
     public String getEmail_Usuario_Logado() {
         return Email_Usuario_Logado;
     }
-    
+
     public String getNome_Usuario_Logado() {
         return Nome_Usuario_Logado;
     }
@@ -66,8 +77,8 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        Modelo_Field = new javax.swing.JLabel();
+        Placa_Field = new javax.swing.JLabel();
         IrPerfil_Button = new javax.swing.JButton();
         ProxCarro_Button = new javax.swing.JButton();
         Campo_Foto = new javax.swing.JLabel();
@@ -98,11 +109,11 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 560, 70, 70));
 
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
+        Modelo_Field.setText("jLabel2");
+        getContentPane().add(Modelo_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
-        jLabel8.setText("jLabel8");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+        Placa_Field.setText("jLabel8");
+        getContentPane().add(Placa_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
 
         IrPerfil_Button.setBorderPainted(false);
         IrPerfil_Button.setContentAreaFilled(false);
@@ -118,6 +129,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
         ProxCarro_Button.setBorderPainted(false);
         ProxCarro_Button.setContentAreaFilled(false);
+        ProxCarro_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ProxCarro_Button.setFocusable(false);
         ProxCarro_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +141,13 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
         AnteCarro_Button.setBorderPainted(false);
         AnteCarro_Button.setContentAreaFilled(false);
+        AnteCarro_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AnteCarro_Button.setFocusable(false);
+        AnteCarro_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnteCarro_ButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(AnteCarro_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 40, 30));
 
         Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Listar_Carros.jpg"))); // NOI18N
@@ -145,7 +163,12 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ProxCarro_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProxCarro_ButtonActionPerformed
-        // TODO add your handling code here:
+        cont++;
+        if (cont > bd_tipo_carro.size() - 1) {
+            cont = 0;
+        }
+        this.Modelo_Field.setText(bd_tipo_carro.get(cont).getModelo_Carro());
+        this.Placa_Field.setText(bd_tipo_carro.get(cont).getPlaca_Carro());
     }//GEN-LAST:event_ProxCarro_ButtonActionPerformed
 
     private void IrPerfil_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrPerfil_ButtonActionPerformed
@@ -156,9 +179,15 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
     }//GEN-LAST:event_IrPerfil_ButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void AnteCarro_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnteCarro_ButtonActionPerformed
+        cont--;
+        if (cont < 0) {
+            cont = bd_tipo_carro.size() - 1;
+        }
+        this.Modelo_Field.setText(bd_tipo_carro.get(cont).getModelo_Carro());
+        this.Placa_Field.setText(bd_tipo_carro.get(cont).getPlaca_Carro());
+    }//GEN-LAST:event_AnteCarro_ButtonActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -191,15 +220,67 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         });
     }
 
+    public void LerArquivo() throws IOException {
+        try {
+            String EnderecoArquivo = "BancoDeDadosCarros.txt";
+
+            // Criar instacia Array
+            ArrayList<Tipo_Carro> bd = new ArrayList<Tipo_Carro>();
+
+            // Importar Arquivo
+            BufferedReader buffRead = new BufferedReader(new FileReader(EnderecoArquivo, StandardCharsets.ISO_8859_1));
+
+            // Ler arquivo
+            String linha = buffRead.readLine();
+            //linha = buffRead.readLine();
+
+            while (linha != null) {
+                //System.out.println(linha);
+
+                // Separar
+                // Armazenar no vetor
+                String Informacoes_cadastro[] = new String[4];
+                System.out.println(linha);
+                Informacoes_cadastro = linha.split(";"); //usando o espaço como separador
+
+                /*Mostrar dados separados
+            for (int i = 0; i < 23; i++) {
+                System.out.println(Informacoes_cadastro[i]);
+                
+            }*/
+                System.out.println(getEmail_Usuario_Logado().equals(Informacoes_cadastro[3]));
+                //if (getEmail_Usuario_Logado().equals(Informacoes_cadastro[3])) {
+                // Instanciar o objeto
+                Tipo_Carro cadastro = new Tipo_Carro(Informacoes_cadastro[0], Informacoes_cadastro[1], Informacoes_cadastro[2], getEmail_Usuario_Logado());
+
+                // Acrescentar no Array
+                bd.add(cadastro);
+                //}
+
+                linha = buffRead.readLine();
+
+            }
+
+            buffRead.close();
+
+            bd_tipo_carro = bd;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            ArrayList<Tipo_Carro> fbd = new ArrayList<Tipo_Carro>();
+            System.out.println("erro listar carro");
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AnteCarro_Button;
     private javax.swing.JLabel Campo_Foto;
     private javax.swing.JButton IrPerfil_Button;
+    private javax.swing.JLabel Modelo_Field;
+    private javax.swing.JLabel Placa_Field;
     private javax.swing.JButton ProxCarro_Button;
     private javax.swing.JLabel Tela_Background;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

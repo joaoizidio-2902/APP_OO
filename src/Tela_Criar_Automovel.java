@@ -100,7 +100,7 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
             
             //Desligar Tela                                                                           
             this.setVisible(false);
-            Tela_Listar_Carros t_c_l = new Tela_Listar_Carros();
+            Tela_Listar_Carros t_c_l = new Tela_Listar_Carros(getEmail_Usuario_Logado());
             t_c_l.setVisible(true);
             
         }else System.out.println("falta termos");

@@ -1,7 +1,10 @@
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -137,21 +140,36 @@ public class Tela_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_EsqueceuS_ButtonActionPerformed
 
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
+        Conexao con = new Conexao();
         try {
+            System.out.println(this.Email_Field.getText());
+            System.out.println(this.Password_Field.getText());
+            
+            if (con.Auth_Login(this.Email_Field.getText(), this.Password_Field.getText()) == true) {
+                this.setVisible(false);
+                Tela_Listar_Carros t_l_c = new Tela_Listar_Carros(this.Email_Field.getText());
+                t_l_c.setVisible(true);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("mensagem na tela de login: " + ex.getMessage());
+        }
+
+        /*try {
             String Nome_Arquivo = "BancoDeDadosUsuarios.txt";
             BufferedReader Linha_Lida = new BufferedReader(new FileReader(Nome_Arquivo));
             String Detalhes_Usuarios[] = new String[3];
 
             while ((Linha_Lida.readLine()) != null) {
-                Detalhes_Usuarios = Linha_Lida.readLine().split(";");
-                if (this.Email_Field.getText().equals(Detalhes_Usuarios[1]) && this.Password_Field.getText().equals(Detalhes_Usuarios[2])) {
-                    this.setVisible(false);
-                    Tela_Listar_Carros t_l_c = new Tela_Listar_Carros(this.Email_Field.getText());
-                    t_l_c.setVisible(true);
-                } 
+            Detalhes_Usuarios = Linha_Lida.readLine().split(";");
+            if (this.Email_Field.getText().equals(Detalhes_Usuarios[1]) && this.Password_Field.getText().equals(Detalhes_Usuarios[2])) {
+            this.setVisible(false);
+            Tela_Listar_Carros t_l_c = new Tela_Listar_Carros(this.Email_Field.getText());
+            t_l_c.setVisible(true); 
             }
-        } catch (Exception e) {
-        }
+            }
+            } catch (Exception e) {
+            }*/
 
     }//GEN-LAST:event_Login_ButtonActionPerformed
 
