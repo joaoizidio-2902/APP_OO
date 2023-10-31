@@ -16,17 +16,10 @@ import java.util.logging.Logger;
  */
 public class Tela_Login extends javax.swing.JFrame {
 
-    private ArrayList<Usuario> Banco_Dados_Usuario;
-
     /**
      * Creates new form Tela_Login
      */
     public Tela_Login() {
-        initComponents();
-    }
-
-    public Tela_Login(ArrayList<Usuario> Banco_Dados_Usuario) {
-        this.Banco_Dados_Usuario = Banco_Dados_Usuario;
         initComponents();
     }
     
@@ -137,8 +130,6 @@ public class Tela_Login extends javax.swing.JFrame {
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
         Conexao con = new Conexao();
         try {
-            System.out.println(this.Email_Field.getText());
-            System.out.println(this.Password_Field.getText());
             
             if (con.Auth_Login(this.Email_Field.getText(), this.Password_Field.getText()) == true) {
                 this.setVisible(false);

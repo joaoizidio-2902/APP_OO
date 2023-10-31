@@ -25,18 +25,6 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
         initComponents();
     }
 
-    private void escrever_arquivo() throws IOException {
-
-        String arquivo = "BancoDeDadosUsuarios.txt";
-        BufferedWriter buffWrite = new BufferedWriter(new FileWriter(arquivo,/* StandardCharsets.ISO_8859_1,*/ true));
-        for (int i = 0; i < this.Banco_Dados_Usuario.size(); i++) {
-            String dados = this.Banco_Dados_Usuario.get(i).getNome_usuario() + ";" + this.Banco_Dados_Usuario.get(i).getEmail_usuario() + ";" + this.Banco_Dados_Usuario.get(i).getSenha_usuario();
-            buffWrite.append(dados + "\n");
-        }
-
-        buffWrite.close();
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -142,7 +130,7 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
                 
                 // Fechar janela
                 this.setVisible(false);
-                Tela_Perfil t_p = new Tela_Perfil();
+                Tela_Perfil t_p = new Tela_Perfil(this.Email_Field.getText(), this.Name_Field.getText());
                 t_p.setVisible(true);
                 
             } catch (SQLException ex) {
@@ -189,25 +177,9 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Name_FieldActionPerformed
 
-    Connection con;
+    
     private void Continue_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Continue_ButtonMouseClicked
-        String nome = Name_Field.getText();
-        String email = Email_Field.getText();
-        char[] senha = Password_Field.getPassword();
-        char[] conf_senha = Confirm_Password_Field.getPassword();
-
-        // Calcula o hash SHA-256 da senha
-        String senhaHash = "";
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] senhaBytes = md.digest(new String(senha).getBytes("UTF-8"));
-            senhaHash = new String(Utils.hexRepresentation(senhaBytes));
-        } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
-            Logger.getLogger(Tela_Cadastro_Usuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        String query = "INSERT INTO Usuario (nome_usuario, email_usuario, senha_usuario) VALUES (?, ?, ?)";
-        PreparedStatement ps;
+        
     }//GEN-LAST:event_Continue_ButtonMouseClicked
 
     private void Confirm_Password_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Confirm_Password_FieldActionPerformed
