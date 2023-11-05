@@ -2,12 +2,23 @@ drop database olheoleo;
 CREATE DATABASE OlheOleo;
 use OlheOleo;
 
+drop table Veiculo;
+drop table Usuario;
+drop table Produto;
+drop table Oficina;
+drop table Relacao;
+
+select*from usuario;
+select*from produto;
+select*from oficina;
+select*from veiculo;
+
 CREATE TABLE Usuario (
 id_usuario INT PRIMARY KEY auto_increment,
 nome_usuario VARCHAR(255),
 tipo_usuario INT,
 sobrenome_usuario VARCHAR(255),
-email_usuario VARCHAR(255),
+email_usuario VARCHAR(255) unique,
 telefone_usuario VARCHAR(255),
 cpf_usuario VARCHAR(11),
 senha_usuario VARCHAR(255)
@@ -20,8 +31,12 @@ veiculo_marca VARCHAR(255),
 veiculo_placa VARCHAR(255),
 veiculo_motor VARCHAR(255),
 veiculo_km FLOAT,
-veiculo_data_ult_troca DATE
+veiculo_data_ult_troca DATE,
+veiculo_email_dono VARCHAR(255),
+FOREIGN KEY (veiculo_email_dono) REFERENCES Usuario(email_usuario)
 );
+
+
 
 CREATE TABLE Oficina (
 id_oficina INT PRIMARY KEY auto_increment,
@@ -59,11 +74,11 @@ VALUES
 ( 'Pedro', 2, 'Fernandes', 'pedro@email.com', '111-222-3333', '11122233303', 'senha789');
 
 -- Inserir dados na tabela Veiculo
-INSERT INTO Veiculo ( veiculo_cor, veiculo_marca, veiculo_placa, veiculo_motor, veiculo_km, veiculo_data_ult_troca)
+INSERT INTO Veiculo ( veiculo_cor, veiculo_marca, veiculo_placa, veiculo_motor, veiculo_km, veiculo_data_ult_troca, veiculo_email_dono)
 VALUES
-( 'Azul', 'Ford', 'ABC-1234', 'V6', 50000, '2023-01-15'),
-( 'Vermelho', 'Chevrolet', 'XYZ-5678', 'V8', 75000, '2023-02-20'),
-( 'Prata', 'Toyota', 'DEF-9012', 'I4', 60000, '2023-03-25');
+( 'Azul', 'Ford', 'ABC-1234', 'V6', 50000, '2023-01-15', 'joao@email.com'),
+( 'Vermelho', 'Chevrolet', 'XYZ-5678', 'V8', 75000, '2023-02-20', 'joao@email.com'),
+( 'Prata', 'Toyota', 'DEF-9012', 'I4', 60000, '2023-03-25', 'joao@email.com');
 
 -- Inserir dados na tabela Oficina
 INSERT INTO Oficina ( nome_oficina, endereco_oficina)
@@ -79,4 +94,3 @@ VALUES
 ( 'Filtro de Óleo', 'Filtro de óleo de alta qualidade', 9.99, 'Bosch', 2),
 ('Pastilhas de Freio', 'Pastilhas de freio dianteiras', 35.50, 'Ferodo', 3);
 
-select*from usuario;
