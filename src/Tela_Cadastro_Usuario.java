@@ -130,12 +130,14 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
                 
                 // Fechar janela
                 this.setVisible(false);
-                Tela_Perfil t_p = new Tela_Perfil(this.Email_Field.getText(), this.Name_Field.getText());
+                Tela_Perfil t_p = new Tela_Perfil(this.Email_Field.getText()/*, this.Name_Field.getText()*/);
                 t_p.setVisible(true);
                 
             } catch (SQLException ex) {
                 Logger.getLogger(Tela_Cadastro_Usuario.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }else{
+            System.out.println("senhas não batem");
         }
 
         //if (this.Password_Field.getText().equals(this.Confirm_Password_Field.getText())) {   

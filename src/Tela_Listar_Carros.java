@@ -18,7 +18,6 @@ import javax.swing.ImageIcon;
 public class Tela_Listar_Carros extends javax.swing.JFrame {
 
     private String Email_Usuario_Logado;
-    private String Nome_Usuario_Logado;
     ArrayList<Tipo_Carro> bd_tipo_carro = new ArrayList<Tipo_Carro>();
     public int cont = 0;
 
@@ -44,7 +43,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         this.Email_Usuario_Logado = Email_Usuario_Logado;
 
         try {
-
+            //Adicionar a imagem no form
             String caminho_foto = "vista-do-carro-3d.jpg";
             ImageIcon imagem = new ImageIcon(caminho_foto);
             this.Campo_Foto.setIcon(imagem);
@@ -54,21 +53,22 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
             imagem = new ImageIcon(img_temp);
             this.Campo_Foto.setIcon(imagem);
-            //this. = imagem;
-
-            LerArquivo();
+            
+            
+            //Fazer conexao com banco de dados
+            Conexao con = new Conexao();
+            this.bd_tipo_carro = con.Listar_Carros(Email_Usuario_Logado);
+            
+            //Colocar os valores iniciais no campos de placa e modelo
             this.Modelo_Field.setText(bd_tipo_carro.get(cont).getModelo_Carro());
             this.Placa_Field.setText(bd_tipo_carro.get(cont).getPlaca_Carro());
+            
         } catch (Exception e) {
         }
     }
 
     public String getEmail_Usuario_Logado() {
         return Email_Usuario_Logado;
-    }
-
-    public String getNome_Usuario_Logado() {
-        return Nome_Usuario_Logado;
     }
 
     @SuppressWarnings("unchecked")
@@ -173,8 +173,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
     private void IrPerfil_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrPerfil_ButtonActionPerformed
         this.setVisible(false);
-        System.out.println(getEmail_Usuario_Logado());
-        Tela_Perfil t_f = new Tela_Perfil(getEmail_Usuario_Logado(), getNome_Usuario_Logado());
+        Tela_Perfil t_f = new Tela_Perfil(getEmail_Usuario_Logado());
         t_f.setVisible(true);
 
     }//GEN-LAST:event_IrPerfil_ButtonActionPerformed
@@ -220,7 +219,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         });
     }
 
-    public void LerArquivo() throws IOException {
+    /*public void LerArquivo() throws IOException {
         try {
             String EnderecoArquivo = "BancoDeDadosCarros.txt";
 
@@ -247,7 +246,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
             for (int i = 0; i < 23; i++) {
                 System.out.println(Informacoes_cadastro[i]);
                 
-            }*/
+            }
                 System.out.println(getEmail_Usuario_Logado().equals(Informacoes_cadastro[3]));
                 //if (getEmail_Usuario_Logado().equals(Informacoes_cadastro[3])) {
                 // Instanciar o objeto
@@ -270,7 +269,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
             ArrayList<Tipo_Carro> fbd = new ArrayList<Tipo_Carro>();
             System.out.println("erro listar carro");
         }
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AnteCarro_Button;

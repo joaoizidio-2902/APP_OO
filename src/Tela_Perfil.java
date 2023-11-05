@@ -16,7 +16,7 @@ public class Tela_Perfil extends javax.swing.JFrame {
         initComponents();
     }
     
-    public Tela_Perfil(String Email_Usuario_Logado, String Nome_Usuario_Logado) {
+    public Tela_Perfil(String Email_Usuario_Logado/*, String Nome_Usuario_Logado*/) {
         initComponents();
         this.Email_Usuario_Logado = Email_Usuario_Logado;
         this.Nome_Usuario_Logado = Nome_Usuario_Logado;

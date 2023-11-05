@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Conexao {
 
@@ -63,35 +64,62 @@ public class Conexao {
         Enable_Connection();
 
         // ResultSet faz a consulta
-        String sql ="insert into usuario(id_usuario, nome_usuario, email_usuario, senha_usuario) values( 4, ?, ?, ?)";
+        String sql = "insert into usuario(id_usuario, nome_usuario, email_usuario, senha_usuario) values( 4, ?, ?, ?)";
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setString(1, Nome_Usuario);
         pst.setString(2, Email_Usuario);
         pst.setString(3, Senha_Usuario);
         pst.execute();
-        
+
         ResultSet rs_Resultado = con.createStatement().executeQuery("select * from usuario where email_usuario like '" + Email_Usuario + "'");
         rs_Resultado.next();
         System.out.println(rs_Resultado.getString("nome_usuario"));
         con.close();
     }
-    
-    protected void Create_Car(String Marca, String Placa, float KM) throws SQLException {
+
+    protected void Create_Car(String Marca, String Placa, float KM, String Email_Usuario) throws SQLException {
         //Ligar conexao
         Enable_Connection();
 
         // ResultSet faz a consulta
-        String sql ="insert into veiculo(veiculo_id, veiculo_marca, veiculo_placa, veiculo_km) values( 4, ?, ?, ?)";
+        String sql = "insert into veiculo(veiculo_marca, veiculo_placa, veiculo_km, veiculo_email_dono) values(?, ?, ?, ?)";
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setString(1, Marca);
         pst.setString(2, Placa);
         pst.setFloat(3, KM);
+        pst.setString(4, Email_Usuario);
         pst.execute();
-        
+
         ResultSet rs_Resultado = con.createStatement().executeQuery("select * from veiculo where veiculo_marca like '" + Marca + "';");
         rs_Resultado.next();
         System.out.println(rs_Resultado.getString("veiculo_marca"));
         con.close();
+    }
+
+    protected ArrayList Listar_Carros(String Email_Usuario) throws SQLException {
+        //Ligar conexao
+        Enable_Connection();
+
+        ResultSet rs_Resultado = con.createStatement().executeQuery("select * from veiculo where veiculo_email_dono like '" + Email_Usuario + "';");
+
+        ArrayList<Tipo_Carro> bd_Carros_Do_Usuario = new ArrayList<Tipo_Carro>();
+
+        while (rs_Resultado.next() != false) {
+            
+
+            if (rs_Resultado.getString("veiculo_email_dono").equals(Email_Usuario)) {
+                Tipo_Carro T_C = new Tipo_Carro(rs_Resultado.getString("veiculo_marca"), rs_Resultado.getString("veiculo_placa"), rs_Resultado.getString("veiculo_email_dono"));
+
+                System.out.println(rs_Resultado.getString("veiculo_marca"));
+                System.out.println(rs_Resultado.getString("veiculo_email_dono"));
+                bd_Carros_Do_Usuario.add(T_C);
+            }
+            
+        }
+
+        con.close();
+
+        return bd_Carros_Do_Usuario;
     }
 
 }

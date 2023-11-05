@@ -16,6 +16,11 @@ public class Tipo_Carro {
         this.Quilometragem_Carro = Quilometragem_Carro;
         this.Dono_Carro = Dono_Carro;
     }
+    public Tipo_Carro(String Modelo_Carro, String Placa_Carro, String Dono_Carro) {
+        this.Modelo_Carro = Modelo_Carro;
+        this.Placa_Carro = Placa_Carro;
+        this.Dono_Carro = Dono_Carro;
+    }
 
     public String getDono_Carro() {
         return Dono_Carro;
