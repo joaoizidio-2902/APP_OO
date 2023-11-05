@@ -1,4 +1,5 @@
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -9,10 +10,9 @@ public class APP_OO {
         Criar classe carro
     */
     
-    public static void main(String[] args) {
-        ArrayList<Usuario> Banco_Dados_Usuario = new ArrayList<Usuario>();
+    public static void main(String[] args) throws SQLException {
         
-        Tela_Login t_l = new Tela_Login(Banco_Dados_Usuario);
+        Tela_Login t_l = new Tela_Login();
         t_l.setVisible(true);
 
     }

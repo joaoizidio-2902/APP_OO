@@ -16,27 +16,13 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
-
-
 public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
-     private ArrayList<Usuario> Banco_Dados_Usuario = new ArrayList<Usuario>();
-     public ImageIcon image;
-    
-     
+
+    private ArrayList<Usuario> Banco_Dados_Usuario = new ArrayList<Usuario>();
+    public ImageIcon image;
+
     public Tela_Cadastro_Usuario() {
         initComponents();
-    }
-    
-    private void escrever_arquivo() throws IOException {
-
-        String arquivo = "BancoDeDadosUsuarios.txt";
-        BufferedWriter buffWrite = new BufferedWriter(new FileWriter(arquivo,/* StandardCharsets.ISO_8859_1,*/ true));
-        for (int i = 0; i < this.Banco_Dados_Usuario.size(); i++) {
-            String dados = this.Banco_Dados_Usuario.get(i).getNome_usuario() + ";" + this.Banco_Dados_Usuario.get(i).getEmail_usuario() + ";" + this.Banco_Dados_Usuario.get(i).getSenha_usuario();
-            buffWrite.append(dados + "\n");
-        }
-
-        buffWrite.close();
     }
 
     /**
@@ -136,13 +122,27 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Continue_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Continue_ButtonActionPerformed
-        
-        if (this.Password_Field.getText().equals(this.Confirm_Password_Field.getText())) {   
-            //Instanciar Usuario
-            Usuario cadastro = new Usuario(this.Name_Field.getText(), this.Email_Field.getText(), this.Password_Field.getText()/*, this.image*/);
 
-            //Adicionar no ArrayList
-            this.Banco_Dados_Usuario.add(cadastro);
+        if (this.Password_Field.getText().equals(this.Confirm_Password_Field.getText())) {
+            Conexao con = new Conexao();
+            try {
+                con.Create_User(this.Name_Field.getText(), this.Email_Field.getText(), this.Password_Field.getText());
+                
+                // Fechar janela
+                this.setVisible(false);
+                Tela_Perfil t_p = new Tela_Perfil(this.Email_Field.getText(), this.Name_Field.getText());
+                t_p.setVisible(true);
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(Tela_Cadastro_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        //if (this.Password_Field.getText().equals(this.Confirm_Password_Field.getText())) {   
+        //Instanciar Usuario
+        //Usuario cadastro = new Usuario(this.Name_Field.getText(), this.Email_Field.getText(), this.Password_Field.getText()/*, this.image*/);
+        //Adicionar no ArrayList
+        /*this.Banco_Dados_Usuario.add(cadastro);
             try {
                 //Escrever
                 escrever_arquivo();
@@ -161,7 +161,7 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
             
             Tela_Perfil t_p = new Tela_Perfil(Email_Usuario_Logado, Nome_Usuario_Logado);
             t_p.setVisible(true);
-        }else System.out.println("senhas n batem");
+        }else System.out.println("senhas n batem");*/
 
     }//GEN-LAST:event_Continue_ButtonActionPerformed
 
@@ -177,45 +177,9 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Name_FieldActionPerformed
 
-    Connection con;
+    
     private void Continue_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Continue_ButtonMouseClicked
-        String nome = Name_Field.getText();
-        String email = Email_Field.getText();
-        char[] senha = Password_Field.getPassword();
-        char[] conf_senha = Confirm_Password_Field.getPassword();
-
-        // Calcula o hash SHA-256 da senha
-        String senhaHash = "";
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] senhaBytes = md.digest(new String(senha).getBytes("UTF-8"));
-            senhaHash = new String(Utils.hexRepresentation(senhaBytes));
-        } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
-            Logger.getLogger(Tela_Cadastro_Usuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        String query = "INSERT INTO Usuario (nome_usuario, email_usuario, senha_usuario) VALUES (?, ?, ?)";
-        PreparedStatement ps;
-
-        try {
-            con = Conexao.getConnection();
-            con.setAutoCommit(false);
-
-            ps = con.prepareStatement(query);
-
-            ps.setString(1, nome);
-            ps.setString(2, email);
-            ps.setString(3, senhaHash);
-            ps.execute();
-
-            con.commit();
-            ps.close();
-
-            JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso!");
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
+        
     }//GEN-LAST:event_Continue_ButtonMouseClicked
 
     private void Confirm_Password_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Confirm_Password_FieldActionPerformed
@@ -225,23 +189,22 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
     private void Photo_AlterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Photo_AlterActionPerformed
         try {
             String caminho_foto = "";
-        
-        JFileChooser chooser = new JFileChooser();
-        int returnVal = chooser.showSaveDialog(chooser);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            caminho_foto = chooser.getSelectedFile().getAbsolutePath();
-        }
-        ImageIcon imagem = new ImageIcon(caminho_foto);
-        this.jLabel2.setIcon(imagem);
-        
-        Image img = imagem.getImage();
-        Image img_temp = img.getScaledInstance(this.jLabel2.getWidth(), this.jLabel2.getHeight(), java.awt.Image.SCALE_SMOOTH);
-        
-        imagem = new ImageIcon(img_temp);
-        this.jLabel2.setIcon(imagem);
-        this.image = imagem;
-        
-        
+
+            JFileChooser chooser = new JFileChooser();
+            int returnVal = chooser.showSaveDialog(chooser);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                caminho_foto = chooser.getSelectedFile().getAbsolutePath();
+            }
+            ImageIcon imagem = new ImageIcon(caminho_foto);
+            this.jLabel2.setIcon(imagem);
+
+            Image img = imagem.getImage();
+            Image img_temp = img.getScaledInstance(this.jLabel2.getWidth(), this.jLabel2.getHeight(), java.awt.Image.SCALE_SMOOTH);
+
+            imagem = new ImageIcon(img_temp);
+            this.jLabel2.setIcon(imagem);
+            this.image = imagem;
+
         } catch (Exception e) {
         }
     }//GEN-LAST:event_Photo_AlterActionPerformed

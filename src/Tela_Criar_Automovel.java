@@ -2,18 +2,21 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author cg3023087
  */
 public class Tela_Criar_Automovel extends javax.swing.JFrame {
+
     private ArrayList<Tipo_Carro> Banco_Dados_Carro = new ArrayList<Tipo_Carro>();
     private String Email_Usuario_Logado;
 
@@ -25,13 +28,13 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
         initComponents();
         this.Email_Usuario_Logado = Email_Usuario_Logado;
     }
-    
+
     private void escrever_arquivo() throws IOException {
 
         String arquivo = "BancoDeDadosCarros.txt";
         BufferedWriter buffWrite = new BufferedWriter(new FileWriter(arquivo,/* StandardCharsets.ISO_8859_1,*/ true));
         for (int i = 0; i < this.Banco_Dados_Carro.size(); i++) {
-            String dados = this.Banco_Dados_Carro.get(i).getModelo_Carro()+ ";" + this.Banco_Dados_Carro.get(i).getPlaca_Carro()+ ";" + this.Banco_Dados_Carro.get(i).getQuilometragem_Carro() + ";" + this.Banco_Dados_Carro.get(i).getDono_Carro();
+            String dados = this.Banco_Dados_Carro.get(i).getModelo_Carro() + ";" + this.Banco_Dados_Carro.get(i).getPlaca_Carro() + ";" + this.Banco_Dados_Carro.get(i).getQuilometragem_Carro() + ";" + this.Banco_Dados_Carro.get(i).getDono_Carro();
             buffWrite.append(dados + "\n");
         }
 
@@ -83,27 +86,25 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CadastrarA_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarA_ButtonActionPerformed
+        Conexao con = new Conexao();
         
         if (!this.Modelo_Field.getText().equals("") && !this.Placa_Field.getText().equals("") && !this.Quilometragem_Field.getText().equals("")) {
-            
-            //Instanciar Carro
-            Tipo_Carro t_c = new Tipo_Carro(this.Modelo_Field.getText(), this.Placa_Field.getText(), this.Quilometragem_Field.getText(), getEmail_Usuario_Logado());
-            System.out.println(getEmail_Usuario_Logado());
-            //Adicionar no ArrayList
-            getBanco_Dados_Carro().add(t_c);
+
             try {
-                //Escrever
-                escrever_arquivo();
-            } catch (Exception e) {
-                System.out.println(e.getCause());
+                con.Create_Car(this.Modelo_Field.getText(), this.Placa_Field.getText(), (float) (Integer.parseInt(this.Quilometragem_Field.getText())));
+                
+                //Desligar Tela                                                                           
+                this.setVisible(false);
+                Tela_Listar_Carros t_c_l = new Tela_Listar_Carros(getEmail_Usuario_Logado());
+                t_c_l.setVisible(true);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Tela_Criar_Automovel.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            //Desligar Tela                                                                           
-            this.setVisible(false);
-            Tela_Listar_Carros t_c_l = new Tela_Listar_Carros(getEmail_Usuario_Logado());
-            t_c_l.setVisible(true);
-            
-        }else System.out.println("falta termos");
+
+        } else {
+            System.out.println("falta termos");
+        }
 
     }//GEN-LAST:event_CadastrarA_ButtonActionPerformed
 
