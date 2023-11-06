@@ -63,17 +63,14 @@ public class Conexao {
         //Ligar conexao
         Enable_Connection();
 
-        // ResultSet faz a consulta
-        String sql = "insert into usuario(id_usuario, nome_usuario, email_usuario, senha_usuario) values( 4, ?, ?, ?)";
+        // ResultSet faz o insert
+        String sql = "insert into usuario(nome_usuario, email_usuario, senha_usuario) values(?, ?, ?)";
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setString(1, Nome_Usuario);
         pst.setString(2, Email_Usuario);
         pst.setString(3, Senha_Usuario);
         pst.execute();
 
-        ResultSet rs_Resultado = con.createStatement().executeQuery("select * from usuario where email_usuario like '" + Email_Usuario + "'");
-        rs_Resultado.next();
-        System.out.println(rs_Resultado.getString("nome_usuario"));
         con.close();
     }
 
@@ -90,9 +87,6 @@ public class Conexao {
         pst.setString(4, Email_Usuario);
         pst.execute();
 
-        ResultSet rs_Resultado = con.createStatement().executeQuery("select * from veiculo where veiculo_marca like '" + Marca + "';");
-        rs_Resultado.next();
-        System.out.println(rs_Resultado.getString("veiculo_marca"));
         con.close();
     }
 
@@ -105,16 +99,13 @@ public class Conexao {
         ArrayList<Tipo_Carro> bd_Carros_Do_Usuario = new ArrayList<Tipo_Carro>();
 
         while (rs_Resultado.next() != false) {
-            
 
             if (rs_Resultado.getString("veiculo_email_dono").equals(Email_Usuario)) {
                 Tipo_Carro T_C = new Tipo_Carro(rs_Resultado.getString("veiculo_marca"), rs_Resultado.getString("veiculo_placa"), rs_Resultado.getString("veiculo_email_dono"));
 
-                System.out.println(rs_Resultado.getString("veiculo_marca"));
-                System.out.println(rs_Resultado.getString("veiculo_email_dono"));
                 bd_Carros_Do_Usuario.add(T_C);
             }
-            
+
         }
 
         con.close();
@@ -122,4 +113,36 @@ public class Conexao {
         return bd_Carros_Do_Usuario;
     }
 
+    protected String Editar_Perfil(String Email_Usuario) throws SQLException {
+        //Ligar conexao
+        Enable_Connection();
+
+        //Pegar Dados
+        ResultSet rs_Resultado = con.createStatement().executeQuery("select * from usuario where email_usuario like '" + Email_Usuario + "';");
+        rs_Resultado.next();
+
+        String Nome_Usuario = rs_Resultado.getString("nome_usuario");
+        String Senha_Usuario = rs_Resultado.getString("senha_usuario");
+
+
+        con.close();
+        
+        return Nome_Usuario + ";" + Senha_Usuario;
+    }
+    
+    protected String Get_Nome_Usuario(String Email_Usuario) throws SQLException {
+        //Ligar conexao
+        Enable_Connection();
+
+        //Pegar Dados
+        ResultSet rs_Resultado = con.createStatement().executeQuery("select * from usuario where email_usuario like '" + Email_Usuario + "';");
+        rs_Resultado.next();
+
+        String Nome_Usuario = rs_Resultado.getString("nome_usuario");
+
+
+        con.close();
+        
+        return Nome_Usuario;
+    }
 }

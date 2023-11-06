@@ -4,7 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /*
@@ -173,8 +176,15 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
     private void IrPerfil_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrPerfil_ButtonActionPerformed
         this.setVisible(false);
-        Tela_Perfil t_f = new Tela_Perfil(getEmail_Usuario_Logado());
-        t_f.setVisible(true);
+        Tela_Perfil t_f;
+        
+        try {
+            t_f = new Tela_Perfil(getEmail_Usuario_Logado());
+            t_f.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Tela_Listar_Carros.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
 
     }//GEN-LAST:event_IrPerfil_ButtonActionPerformed
 
