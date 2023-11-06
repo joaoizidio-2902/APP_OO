@@ -1,3 +1,8 @@
+
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,19 +15,22 @@
  */
 public class Tela_Perfil extends javax.swing.JFrame {
     public String Email_Usuario_Logado;
-    public String Nome_Usuario_Logado;
     
-    public Tela_Perfil() {
+    public Tela_Perfil() throws SQLException {
         initComponents();
     }
     
-    public Tela_Perfil(String Email_Usuario_Logado/*, String Nome_Usuario_Logado*/) {
+    public Tela_Perfil(String Email_Usuario_Logado) throws SQLException {
         initComponents();
         this.Email_Usuario_Logado = Email_Usuario_Logado;
-        this.Nome_Usuario_Logado = Nome_Usuario_Logado;
-        
+        Set_Valores_labels();
+    }
+    
+    protected void Set_Valores_labels() throws SQLException{
         this.Email_Label.setText(this.Email_Usuario_Logado);
-        this.Nome_Label.setText(this.Nome_Usuario_Logado);
+        
+        Conexao con = new Conexao();
+        this.Nome_Label.setText(con.Get_Nome_Usuario(this.Email_Usuario_Logado));
     }
 
     
@@ -97,8 +105,14 @@ public class Tela_Perfil extends javax.swing.JFrame {
 
     private void EditarP_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarP_ButtonActionPerformed
         this.setVisible(false);
-        Tela_Cadastro_Usuario t_c_u = new Tela_Cadastro_Usuario();
-        t_c_u.setVisible(true);
+        Tela_Cadastro_Usuario t_c_u;
+        try {
+            t_c_u = new Tela_Cadastro_Usuario(Email_Usuario_Logado);
+            t_c_u.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Tela_Perfil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_EditarP_ButtonActionPerformed
 
     private void EcerrarSessão_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EcerrarSessão_ButtonActionPerformed
@@ -137,7 +151,11 @@ public class Tela_Perfil extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tela_Perfil().setVisible(true);
+                try {
+                    new Tela_Perfil().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Tela_Perfil.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
