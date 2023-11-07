@@ -32,7 +32,7 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
     private void escrever_arquivo() throws IOException {
 
         String arquivo = "BancoDeDadosCarros.txt";
-        BufferedWriter buffWrite = new BufferedWriter(new FileWriter(arquivo,/* StandardCharsets.ISO_8859_1,*/ true));
+        BufferedWriter buffWrite = new BufferedWriter(new FileWriter(arquivo, /*StandardCharsets.ISO_8859_1,*/ true));
         for (int i = 0; i < this.Banco_Dados_Carro.size(); i++) {
             String dados = this.Banco_Dados_Carro.get(i).getModelo_Carro() + ";" + this.Banco_Dados_Carro.get(i).getPlaca_Carro() + ";" + this.Banco_Dados_Carro.get(i).getQuilometragem_Carro() + ";" + this.Banco_Dados_Carro.get(i).getDono_Carro();
             buffWrite.append(dados + "\n");
@@ -91,7 +91,7 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
         if (!this.Modelo_Field.getText().equals("") && !this.Placa_Field.getText().equals("") && !this.Quilometragem_Field.getText().equals("")) {
 
             try {
-                con.Create_Car(this.Modelo_Field.getText(), this.Placa_Field.getText(), (float) (Integer.parseInt(this.Quilometragem_Field.getText())));
+                con.Create_Car(this.Modelo_Field.getText(), this.Placa_Field.getText(), (float) (Integer.parseInt(this.Quilometragem_Field.getText())), this.getEmail_Usuario_Logado());
                 
                 //Desligar Tela                                                                           
                 this.setVisible(false);

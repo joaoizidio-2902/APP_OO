@@ -1,28 +1,35 @@
 
 import java.awt.Image;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import java.sql.Connection;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
 public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
-
-    private ArrayList<Usuario> Banco_Dados_Usuario = new ArrayList<Usuario>();
+    
+    String Email_Usario_Logado;
     public ImageIcon image;
 
     public Tela_Cadastro_Usuario() {
         initComponents();
+    }
+    
+    public Tela_Cadastro_Usuario(String Email_Usario_Logado) throws SQLException {
+        this.Email_Usario_Logado = Email_Usario_Logado;
+        initComponents();
+        
+        Conexao con = new Conexao();
+        String Nome_Senha_Junto = con.Editar_Perfil(Email_Usario_Logado);
+        
+        String dados[] = new String[2];
+        dados = Nome_Senha_Junto.split(";");
+        
+        this.Name_Field.setText(dados[0]);
+        this.Email_Field.setText(this.Email_Usario_Logado);
+        this.Email_Field.setEditable(false);
+        
+        this.Password_Field.setText(dados[1]);
     }
 
     /**
@@ -130,12 +137,14 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
                 
                 // Fechar janela
                 this.setVisible(false);
-                Tela_Perfil t_p = new Tela_Perfil(this.Email_Field.getText(), this.Name_Field.getText());
+                Tela_Perfil t_p = new Tela_Perfil(this.Email_Field.getText()/*, this.Name_Field.getText()*/);
                 t_p.setVisible(true);
                 
             } catch (SQLException ex) {
                 Logger.getLogger(Tela_Cadastro_Usuario.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }else{
+            System.out.println("senhas não batem");
         }
 
         //if (this.Password_Field.getText().equals(this.Confirm_Password_Field.getText())) {   
