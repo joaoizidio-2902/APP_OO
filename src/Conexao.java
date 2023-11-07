@@ -17,7 +17,6 @@ public class Conexao {
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-
             String url = "jdbc:mysql://localhost:3307/olheoleo?useSSL=false";
             String user = "admin";
             String password = "123456";
