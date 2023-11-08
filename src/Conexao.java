@@ -113,7 +113,7 @@ public class Conexao {
         return bd_Carros_Do_Usuario;
     }
 
-    protected String Editar_Perfil(String Email_Usuario) throws SQLException {
+    protected String Tela_Perfil_Detalhes(String Email_Usuario) throws SQLException {
         //Ligar conexao
         Enable_Connection();
 
