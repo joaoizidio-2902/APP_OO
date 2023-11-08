@@ -20,7 +20,7 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
         initComponents();
         
         Conexao con = new Conexao();
-        String Nome_Senha_Junto = con.Editar_Perfil(Email_Usario_Logado);
+        String Nome_Senha_Junto = con.Tela_Perfil_Detalhes(Email_Usario_Logado);
         
         String dados[] = new String[2];
         dados = Nome_Senha_Junto.split(";");

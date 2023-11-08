@@ -9,11 +9,15 @@
  */
 public class Tela_Listar_Produto extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tela_Listar_Produto
-     */
+    private String Email_Usuario_Logado;
+    
     public Tela_Listar_Produto() {
         initComponents();
+    }
+    
+    public Tela_Listar_Produto(String Email_Usuario_Logado) {
+        initComponents();
+        this.Email_Usuario_Logado = Email_Usuario_Logado;
     }
 
     /**
@@ -25,21 +29,74 @@ public class Tela_Listar_Produto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        IrCarros_Button = new javax.swing.JButton();
+        Prox_Prod_Button = new javax.swing.JButton();
+        Ante_Prod_Button = new javax.swing.JButton();
+        Criar_Prod_Button = new javax.swing.JButton();
+        Nome_Label = new javax.swing.JLabel();
+        Marca_Label = new javax.swing.JLabel();
+        Preco_Label = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        IrCarros_Button.setBorderPainted(false);
+        IrCarros_Button.setContentAreaFilled(false);
+        IrCarros_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        IrCarros_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IrCarros_ButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(IrCarros_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 60, 60));
+
+        Prox_Prod_Button.setBorderPainted(false);
+        Prox_Prod_Button.setContentAreaFilled(false);
+        Prox_Prod_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(Prox_Prod_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 313, 40, 40));
+
+        Ante_Prod_Button.setBorderPainted(false);
+        Ante_Prod_Button.setContentAreaFilled(false);
+        Ante_Prod_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(Ante_Prod_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 50, 40));
+
+        Criar_Prod_Button.setBorderPainted(false);
+        Criar_Prod_Button.setContentAreaFilled(false);
+        Criar_Prod_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Criar_Prod_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Criar_Prod_ButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Criar_Prod_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 563, 70, 70));
+
+        Nome_Label.setText("Nome do Produto");
+        getContentPane().add(Nome_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, 20));
+
+        Marca_Label.setText("Marca do Produto");
+        getContentPane().add(Marca_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 100, 20));
+
+        Preco_Label.setText("Preco do Produto");
+        getContentPane().add(Preco_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 100, 20));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Produtos.jpg"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void IrCarros_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrCarros_ButtonActionPerformed
+        this.setVisible(false);
+        Tela_Listar_Carros t_l_c = new Tela_Listar_Carros(Email_Usuario_Logado);
+        t_l_c.setVisible(true);
+    }//GEN-LAST:event_IrCarros_ButtonActionPerformed
+
+    private void Criar_Prod_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Criar_Prod_ButtonActionPerformed
+        this.setVisible(false);
+        Tela_Criar_Produto t_c_p = new Tela_Criar_Produto(Email_Usuario_Logado);
+        t_c_p.setVisible(true);
+    }//GEN-LAST:event_Criar_Prod_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,5 +134,13 @@ public class Tela_Listar_Produto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Ante_Prod_Button;
+    private javax.swing.JLabel Background;
+    private javax.swing.JButton Criar_Prod_Button;
+    private javax.swing.JButton IrCarros_Button;
+    private javax.swing.JLabel Marca_Label;
+    private javax.swing.JLabel Nome_Label;
+    private javax.swing.JLabel Preco_Label;
+    private javax.swing.JButton Prox_Prod_Button;
     // End of variables declaration//GEN-END:variables
 }

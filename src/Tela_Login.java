@@ -47,7 +47,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 Email_FieldActionPerformed(evt);
             }
         });
-        getContentPane().add(Email_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 270, 30));
+        getContentPane().add(Email_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 270, 30));
 
         Password_Field.setBackground(new java.awt.Color(245, 245, 245));
         Password_Field.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -57,7 +57,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 Password_FieldActionPerformed(evt);
             }
         });
-        getContentPane().add(Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 270, 30));
+        getContentPane().add(Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 270, 30));
 
         EsqueceuC_Button.setBorderPainted(false);
         EsqueceuC_Button.setContentAreaFilled(false);
@@ -77,7 +77,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 CriarC_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CriarC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 90, 20));
+        getContentPane().add(CriarC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 90, 20));
 
         Login_Button.setBorderPainted(false);
         Login_Button.setContentAreaFilled(false);
@@ -87,7 +87,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 Login_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(Login_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 140, 50));
+        getContentPane().add(Login_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 140, 50));
 
         EsqueceuS_Button.setBorderPainted(false);
         EsqueceuS_Button.setContentAreaFilled(false);
@@ -97,9 +97,9 @@ public class Tela_Login extends javax.swing.JFrame {
                 EsqueceuS_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(EsqueceuS_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 190, 30));
+        getContentPane().add(EsqueceuS_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 150, 20));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Login.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Login.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setPreferredSize(new java.awt.Dimension(375, 844));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 660));

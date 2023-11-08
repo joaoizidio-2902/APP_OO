@@ -1,19 +1,35 @@
+
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author joaoi
  */
 public class Tela_Criar_Produto extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tela_Criar_Produto
-     */
+    public String Email_Usuario_Logado;
+
     public Tela_Criar_Produto() {
         initComponents();
+    }
+
+    public Tela_Criar_Produto(String Email_Usuario_Logado) {
+        initComponents();
+        setEmail_Usuario_Logado(Email_Usuario_Logado);
+    }
+
+    public String getEmail_Usuario_Logado() {
+        return Email_Usuario_Logado;
+    }
+
+    public void setEmail_Usuario_Logado(String Email_Usuario_Logado) {
+        this.Email_Usuario_Logado = Email_Usuario_Logado;
     }
 
     /**
@@ -25,21 +41,75 @@ public class Tela_Criar_Produto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Voltar_Prod_Button = new javax.swing.JButton();
+        Criar_Produto_Button = new javax.swing.JButton();
+        Nome_Field = new javax.swing.JTextField();
+        Marca_Field = new javax.swing.JTextField();
+        Preco_Field = new javax.swing.JTextField();
+        Descricao_Field = new javax.swing.JTextField();
+        Background = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Voltar_Prod_Button.setBorderPainted(false);
+        Voltar_Prod_Button.setContentAreaFilled(false);
+        Voltar_Prod_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Voltar_Prod_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Voltar_Prod_ButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Voltar_Prod_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 60, 50));
+
+        Criar_Produto_Button.setBorderPainted(false);
+        Criar_Produto_Button.setContentAreaFilled(false);
+        Criar_Produto_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Criar_Produto_Button.setDefaultCapable(false);
+        Criar_Produto_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Criar_Produto_ButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Criar_Produto_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 530, 380, 110));
+        getContentPane().add(Nome_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 250, 30));
+        getContentPane().add(Marca_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 250, 30));
+        getContentPane().add(Preco_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 250, 30));
+        getContentPane().add(Descricao_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 250, 30));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Add_Produto.jpg"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Voltar_Prod_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Voltar_Prod_ButtonActionPerformed
+        this.setVisible(false);
+        Tela_Listar_Produto t_l_p = new Tela_Listar_Produto(getEmail_Usuario_Logado());
+        t_l_p.setVisible(true);
+    }//GEN-LAST:event_Voltar_Prod_ButtonActionPerformed
+
+    private void Criar_Produto_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Criar_Produto_ButtonActionPerformed
+        Conexao con = new Conexao();
+
+        if (!this.Nome_Field.getText().equals("") && !this.Marca_Field.getText().equals("") && !this.Preco_Field.getText().equals("") && !this.Descricao_Field.getText().equals("")) {
+
+            try {
+                con.Insert_Into_Table_Produto(this.Nome_Field.getText(), this.Marca_Field.getText(), Float.parseFloat(this.Preco_Field.getText()), this.Descricao_Field.getText(), this.Email_Usuario_Logado);
+
+                //Desligar Tela
+                this.setVisible(false);
+                Tela_Listar_Carros t_c_l = new Tela_Listar_Carros(getEmail_Usuario_Logado());
+                t_c_l.setVisible(true);
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(Tela_Criar_Produto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            System.out.println("falta termos");
+        }
+    }//GEN-LAST:event_Criar_Produto_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,5 +147,12 @@ public class Tela_Criar_Produto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
+    private javax.swing.JButton Criar_Produto_Button;
+    private javax.swing.JTextField Descricao_Field;
+    private javax.swing.JTextField Marca_Field;
+    private javax.swing.JTextField Nome_Field;
+    private javax.swing.JTextField Preco_Field;
+    private javax.swing.JButton Voltar_Prod_Button;
     // End of variables declaration//GEN-END:variables
 }
