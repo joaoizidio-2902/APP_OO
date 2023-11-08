@@ -44,6 +44,7 @@ public class Tela_Perfil extends javax.swing.JFrame {
         Nome_Label = new javax.swing.JLabel();
         EcerrarSessão_Button = new javax.swing.JButton();
         Voltar_Button = new javax.swing.JButton();
+        Foto_Perfil = new javax.swing.JLabel();
         Tela_Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,18 +58,18 @@ public class Tela_Perfil extends javax.swing.JFrame {
                 EditarP_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(EditarP_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 130, 30));
+        getContentPane().add(EditarP_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 130, 30));
 
         AlterarS_Button.setBorderPainted(false);
         AlterarS_Button.setContentAreaFilled(false);
         AlterarS_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(AlterarS_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 130, 40));
+        getContentPane().add(AlterarS_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 130, 40));
 
         Email_Label.setText("email");
-        getContentPane().add(Email_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 120, 30));
+        getContentPane().add(Email_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 120, 30));
 
         Nome_Label.setText("nome");
-        getContentPane().add(Nome_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 120, 30));
+        getContentPane().add(Nome_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 120, 30));
 
         EcerrarSessão_Button.setBorderPainted(false);
         EcerrarSessão_Button.setContentAreaFilled(false);
@@ -78,7 +79,7 @@ public class Tela_Perfil extends javax.swing.JFrame {
                 EcerrarSessão_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(EcerrarSessão_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 160, 40));
+        getContentPane().add(EcerrarSessão_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 150, 40));
 
         Voltar_Button.setBackground(new java.awt.Color(245, 245, 245));
         Voltar_Button.setBorderPainted(false);
@@ -89,7 +90,10 @@ public class Tela_Perfil extends javax.swing.JFrame {
                 Voltar_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(Voltar_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 40, 40));
+        getContentPane().add(Voltar_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 50, 50));
+
+        Foto_Perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/avatar.jpg"))); // NOI18N
+        getContentPane().add(Foto_Perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 140, 140));
 
         Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Perfil.jpg"))); // NOI18N
         getContentPane().add(Tela_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 660));
@@ -165,6 +169,7 @@ public class Tela_Perfil extends javax.swing.JFrame {
     private javax.swing.JButton EcerrarSessão_Button;
     private javax.swing.JButton EditarP_Button;
     private javax.swing.JLabel Email_Label;
+    private javax.swing.JLabel Foto_Perfil;
     private javax.swing.JLabel Nome_Label;
     private javax.swing.JLabel Tela_Background;
     private javax.swing.JButton Voltar_Button;

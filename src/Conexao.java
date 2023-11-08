@@ -73,7 +73,7 @@ public class Conexao {
         con.close();
     }
 
-    protected void Create_Car(String Marca, String Placa, float KM, String Email_Usuario) throws SQLException {
+    protected void Insert_Into_Table_Veiculo(String Marca, String Placa, float KM, String Email_Usuario) throws SQLException {
         //Ligar conexao
         Enable_Connection();
 
@@ -84,6 +84,22 @@ public class Conexao {
         pst.setString(2, Placa);
         pst.setFloat(3, KM);
         pst.setString(4, Email_Usuario);
+        pst.execute();
+
+        con.close();
+    }
+    
+    protected void Insert_Into_Table_Produto(String Nome, String Marca, float Preco, String Descricao, String Email_Usuario) throws SQLException {
+        //Ligar conexao
+        Enable_Connection();
+
+        // ResultSet faz a consulta
+        String sql = "insert into produto(produto_nome, produto_marca, produto_preco, produto_descricao) values(?, ?, ?, ?)";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, Nome);
+        pst.setString(2, Marca);
+        pst.setFloat(3, Preco);
+        pst.setString(4, Descricao);
         pst.execute();
 
         con.close();
