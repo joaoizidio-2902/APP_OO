@@ -1,23 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
-/**
- *
- * @author joaoi
- */
+import java.util.ArrayList;
+
 public class Tela_Listar_Produto extends javax.swing.JFrame {
 
     private String Email_Usuario_Logado;
-    
+    private ArrayList<Tipo_Produto> bd_tipo_produtos;
+    public int cont = 0;
+
     public Tela_Listar_Produto() {
         initComponents();
     }
-    
+
     public Tela_Listar_Produto(String Email_Usuario_Logado) {
         initComponents();
         this.Email_Usuario_Logado = Email_Usuario_Logado;
+
+        try {
+            Conexao con = new Conexao();
+            this.bd_tipo_produtos = con.Listar_Produtos();
+            Atualizar_Informacoes();
+            
+        } catch (Exception e) {
+            System.out.println(e.getCause());
+        }
+    }
+
+    public void Atualizar_Informacoes() {
+        //Colocar os valores iniciais no campos de produto_nome, produto_marca, produto_preco, produto_descricao
+        this.Nome_Label.setText(bd_tipo_produtos.get(cont).getNome_Produto());
+        this.Marca_Label.setText(bd_tipo_produtos.get(cont).getMarca_Produto());
+        this.Preco_Label.setText(Float.toString(bd_tipo_produtos.get(cont).getPreco_Produto()));
+        this.Descricao_Label.setText(bd_tipo_produtos.get(cont).getDescricao_Produto());
     }
 
     /**
@@ -36,6 +49,7 @@ public class Tela_Listar_Produto extends javax.swing.JFrame {
         Nome_Label = new javax.swing.JLabel();
         Marca_Label = new javax.swing.JLabel();
         Preco_Label = new javax.swing.JLabel();
+        Descricao_Label = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,11 +68,21 @@ public class Tela_Listar_Produto extends javax.swing.JFrame {
         Prox_Prod_Button.setBorderPainted(false);
         Prox_Prod_Button.setContentAreaFilled(false);
         Prox_Prod_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Prox_Prod_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Prox_Prod_ButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(Prox_Prod_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 313, 40, 40));
 
         Ante_Prod_Button.setBorderPainted(false);
         Ante_Prod_Button.setContentAreaFilled(false);
         Ante_Prod_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Ante_Prod_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ante_Prod_ButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(Ante_Prod_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 50, 40));
 
         Criar_Prod_Button.setBorderPainted(false);
@@ -72,13 +96,16 @@ public class Tela_Listar_Produto extends javax.swing.JFrame {
         getContentPane().add(Criar_Prod_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 563, 70, 70));
 
         Nome_Label.setText("Nome do Produto");
-        getContentPane().add(Nome_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, 20));
+        getContentPane().add(Nome_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 160, 20));
 
         Marca_Label.setText("Marca do Produto");
-        getContentPane().add(Marca_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 100, 20));
+        getContentPane().add(Marca_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 170, 20));
 
         Preco_Label.setText("Preco do Produto");
-        getContentPane().add(Preco_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 100, 20));
+        getContentPane().add(Preco_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 160, 20));
+
+        Descricao_Label.setText("Descrição do Produto");
+        getContentPane().add(Descricao_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 160, -1));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Produtos.jpg"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 660));
@@ -97,6 +124,22 @@ public class Tela_Listar_Produto extends javax.swing.JFrame {
         Tela_Criar_Produto t_c_p = new Tela_Criar_Produto(Email_Usuario_Logado);
         t_c_p.setVisible(true);
     }//GEN-LAST:event_Criar_Prod_ButtonActionPerformed
+
+    private void Prox_Prod_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Prox_Prod_ButtonActionPerformed
+        cont++;
+        if (cont > bd_tipo_produtos.size() - 1) {
+            cont = 0;
+        }
+        Atualizar_Informacoes();
+    }//GEN-LAST:event_Prox_Prod_ButtonActionPerformed
+
+    private void Ante_Prod_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ante_Prod_ButtonActionPerformed
+        cont--;
+        if (cont < 0) {
+            cont = bd_tipo_produtos.size() - 1;
+        }
+        Atualizar_Informacoes();
+    }//GEN-LAST:event_Ante_Prod_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +180,7 @@ public class Tela_Listar_Produto extends javax.swing.JFrame {
     private javax.swing.JButton Ante_Prod_Button;
     private javax.swing.JLabel Background;
     private javax.swing.JButton Criar_Prod_Button;
+    private javax.swing.JLabel Descricao_Label;
     private javax.swing.JButton IrCarros_Button;
     private javax.swing.JLabel Marca_Label;
     private javax.swing.JLabel Nome_Label;
