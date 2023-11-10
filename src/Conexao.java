@@ -116,9 +116,9 @@ public class Conexao {
         while (rs_Resultado.next() != false) {
 
             if (rs_Resultado.getString("veiculo_email_dono").equals(Email_Usuario)) {
-                Tipo_Carro T_C = new Tipo_Carro(rs_Resultado.getString("veiculo_marca"), rs_Resultado.getString("veiculo_placa"), rs_Resultado.getString("veiculo_email_dono"));
+                Tipo_Carro t_c = new Tipo_Carro(rs_Resultado.getString("veiculo_marca"), rs_Resultado.getString("veiculo_placa"), rs_Resultado.getFloat("veiculo_km"), rs_Resultado.getString("veiculo_email_dono"));
 
-                bd_Carros_Do_Usuario.add(T_C);
+                bd_Carros_Do_Usuario.add(t_c);
             }
 
         }
@@ -126,6 +126,29 @@ public class Conexao {
         con.close();
 
         return bd_Carros_Do_Usuario;
+    }
+    
+    protected ArrayList Listar_Produtos() throws SQLException {
+        //Ligar conexao
+        Enable_Connection();
+
+        //Fazer consulta
+        ResultSet rs_Resultado = con.createStatement().executeQuery("select * from produto;");
+
+        ArrayList<Tipo_Produto> bd_Produto = new ArrayList<Tipo_Produto>();
+
+        while (rs_Resultado.next() != false) {
+
+            
+                Tipo_Produto t_p = new Tipo_Produto(rs_Resultado.getString("produto_nome"), rs_Resultado.getString("produto_marca"), rs_Resultado.getString("produto_descricao"), rs_Resultado.getFloat("produto_preco"));
+
+                bd_Produto.add(t_p);
+
+        }
+
+        con.close();
+
+        return bd_Produto;
     }
 
     protected String Tela_Perfil_Detalhes(String Email_Usuario) throws SQLException {

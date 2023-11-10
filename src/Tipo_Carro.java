@@ -8,17 +8,13 @@
  * @author cg3023087
  */
 public class Tipo_Carro {
-    private String Modelo_Carro, Placa_Carro, Quilometragem_Carro, Dono_Carro;
-
-    public Tipo_Carro(String Modelo_Carro, String Placa_Carro, String Quilometragem_Carro, String Dono_Carro) {
+    private String Modelo_Carro, Placa_Carro, Dono_Carro;
+    private float  Quilometragem_Carro;
+    
+    public Tipo_Carro(String Modelo_Carro, String Placa_Carro, float Quilometragem_Carro, String Dono_Carro) {
         this.Modelo_Carro = Modelo_Carro;
         this.Placa_Carro = Placa_Carro;
         this.Quilometragem_Carro = Quilometragem_Carro;
-        this.Dono_Carro = Dono_Carro;
-    }
-    public Tipo_Carro(String Modelo_Carro, String Placa_Carro, String Dono_Carro) {
-        this.Modelo_Carro = Modelo_Carro;
-        this.Placa_Carro = Placa_Carro;
         this.Dono_Carro = Dono_Carro;
     }
 
@@ -46,11 +42,11 @@ public class Tipo_Carro {
         this.Placa_Carro = Placa_Carro;
     }
 
-    public String getQuilometragem_Carro() {
+    public float getQuilometragem_Carro() {
         return Quilometragem_Carro;
     }
 
-    public void setQuilometragem_Carro(String Quilometragem_Carro) {
+    public void setQuilometragem_Carro(float Quilometragem_Carro) {
         this.Quilometragem_Carro = Quilometragem_Carro;
     }
 }

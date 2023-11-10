@@ -6,8 +6,9 @@ import java.util.ArrayList;
 public class APP_OO {
 
     /*
-        Criar variavel de qual login esta logado ------ OK
-        Criar classe carro
+        Ok -------- Arrumar foto de perfil na tela perfil 
+        Ok -------- Fazer o select no banco para a tela de produtos
+        Adicionar campo quilometragemn a tela de listar carros
     */
     
     public static void main(String[] args) throws SQLException {
