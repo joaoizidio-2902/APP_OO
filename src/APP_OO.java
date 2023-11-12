@@ -8,7 +8,7 @@ public class APP_OO {
     /*
         Ok -------- Arrumar foto de perfil na tela perfil 
         Ok -------- Fazer o select no banco para a tela de produtos
-        Adicionar campo quilometragemn a tela de listar carros
+        Ok -------- Adicionar campo quilometragemn a tela de listar carros
     */
     
     public static void main(String[] args) throws SQLException {

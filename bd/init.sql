@@ -12,6 +12,7 @@ select*from usuario;
 select*from produto;
 select*from oficina;
 select*from veiculo;
+select*from relacao;
 
 CREATE TABLE Usuario (
 id_usuario INT PRIMARY KEY auto_increment,
@@ -28,7 +29,7 @@ CREATE TABLE Veiculo (
 veiculo_id INT PRIMARY KEY auto_increment,
 veiculo_cor VARCHAR(255),
 veiculo_marca VARCHAR(255),
-veiculo_placa VARCHAR(255),
+veiculo_placa VARCHAR(255) unique not null,
 veiculo_motor VARCHAR(255),
 veiculo_km FLOAT,
 veiculo_data_ult_troca DATE,
@@ -93,4 +94,6 @@ VALUES
 ( 'Óleo de Motor', 'Óleo sintético 5W-30', 25.99, 'Castrol', 1),
 ( 'Filtro de Óleo', 'Filtro de óleo de alta qualidade', 9.99, 'Bosch', 2),
 ('Pastilhas de Freio', 'Pastilhas de freio dianteiras', 35.50, 'Ferodo', 3);
+
+update veiculo set veiculo_marca = "Fiat UNO", veiculo_km = 654 where veiculo_placa like "ABC-1234";
 
