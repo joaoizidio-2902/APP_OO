@@ -117,9 +117,11 @@ public final class Tela_Perfil extends javax.swing.JFrame {
     private void EditarP_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarP_ButtonActionPerformed
         this.setVisible(false);
         Tela_Cadastro_Usuario t_c_u;
+        
         try {
             t_c_u = new Tela_Cadastro_Usuario(Email_Usuario_Logado);
             t_c_u.setVisible(true);
+            
         } catch (SQLException ex) {
             Logger.getLogger(Tela_Perfil.class.getName()).log(Level.SEVERE, null, ex);
         }

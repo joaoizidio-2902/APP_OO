@@ -44,14 +44,14 @@ public class Conexao {
 
         //rs.next é necessario para ler primeira linha e as proximas
         rs.next();
-        System.out.println("nome: " + rs.getString("nome_usuario"));
+        //System.out.println("nome: " + rs.getString("nome_usuario"));
 
         if (rs.getString("senha_usuario").equals(Senha)) {
-            System.out.println("Senha igual Senha digitada");
+            //System.out.println("Senha igual Senha digitada");
             con.close();
             return true;
         } else {
-            System.out.println("Senha igual Senha digitada");
+            //System.out.println("Senha igual Senha digitada");
             con.close();
             return false;
         }
@@ -182,5 +182,34 @@ public class Conexao {
         con.close();
         
         return Nome_Usuario;
+    }
+    
+    protected void Update_Veiculo(String Modelo, String Placa, float KM) throws SQLException {
+        //Ligar conexao
+        Enable_Connection();
+
+        // ResultSet faz a consulta
+        String sql = "update veiculo set veiculo_marca = ?, veiculo_km = ? where veiculo_placa like ?";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, Modelo);
+        pst.setFloat(2, KM);
+        pst.setString(3, Placa);
+        pst.executeUpdate();
+        
+        con.close();
+    }
+    
+    protected void Delete_Veiculo(String Placa) throws SQLException {
+        //Ligar conexao
+        Enable_Connection();
+        
+        String sql = "delete from veiculo where veiculo_placa like ?;";
+        PreparedStatement pst = con.prepareStatement(sql);
+        System.out.println(Placa);
+        pst.setString(1, Placa);
+        System.out.println("aqui");
+        pst.execute();
+        
+        con.close();
     }
 }
