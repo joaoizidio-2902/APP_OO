@@ -67,7 +67,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 EsqueceuC_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(EsqueceuC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 130, 20));
+        getContentPane().add(EsqueceuC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 130, 20));
 
         CriarC_Button.setBorderPainted(false);
         CriarC_Button.setContentAreaFilled(false);
@@ -97,7 +97,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 EsqueceuS_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(EsqueceuS_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 150, 20));
+        getContentPane().add(EsqueceuS_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, 180, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Login.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
