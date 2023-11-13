@@ -44,18 +44,21 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
             imagem = new ImageIcon(img_temp);
             this.Campo_Foto.setIcon(imagem);*/
-            
-            
+
             //Fazer conexao com banco de dados
             Conexao con = new Conexao();
             this.bd_tipo_carro = con.Listar_Carros(Email_Usuario_Logado);
-            
-            //Colocar os valores iniciais no campos de placa e modelo
-            this.Modelo_Field.setText(bd_tipo_carro.get(cont).getModelo_Carro());
-            this.Placa_Field.setText(bd_tipo_carro.get(cont).getPlaca_Carro());
-            
+            Atualizar_Informacoes();
+
         } catch (Exception e) {
         }
+    }
+
+    public void Atualizar_Informacoes() {
+        //Colocar os valores iniciais no campos de placa e modelo
+        this.Modelo_Field.setText(bd_tipo_carro.get(cont).getModelo_Carro());
+        this.Placa_Field.setText(bd_tipo_carro.get(cont).getPlaca_Carro());
+        this.Quilometragem_Field.setText(Float.toString(bd_tipo_carro.get(cont).getQuilometragem_Carro()));
     }
 
     public String getEmail_Usuario_Logado() {
@@ -70,10 +73,12 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         IrAdicionarCarro_Button = new javax.swing.JButton();
         Modelo_Field = new javax.swing.JLabel();
         Placa_Field = new javax.swing.JLabel();
+        Quilometragem_Field = new javax.swing.JLabel();
         IrPerfil_Button = new javax.swing.JButton();
         ProxCarro_Button = new javax.swing.JButton();
         AnteCarro_Button = new javax.swing.JButton();
         IrProdutos_Button = new javax.swing.JButton();
+        Ir_Editar_Veiculo_Button = new javax.swing.JButton();
         Tela_Background = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -100,11 +105,14 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         });
         getContentPane().add(IrAdicionarCarro_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 570, 70, 70));
 
-        Modelo_Field.setText("jLabel2");
-        getContentPane().add(Modelo_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, -1, -1));
+        Modelo_Field.setText("Modelo");
+        getContentPane().add(Modelo_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 140, -1));
 
-        Placa_Field.setText("jLabel8");
-        getContentPane().add(Placa_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, -1, -1));
+        Placa_Field.setText("Placa");
+        getContentPane().add(Placa_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 150, -1));
+
+        Quilometragem_Field.setText("Quilometragem");
+        getContentPane().add(Quilometragem_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 150, -1));
 
         IrPerfil_Button.setBorderPainted(false);
         IrPerfil_Button.setContentAreaFilled(false);
@@ -150,6 +158,16 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         });
         getContentPane().add(IrProdutos_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 50, 40));
 
+        Ir_Editar_Veiculo_Button.setBorderPainted(false);
+        Ir_Editar_Veiculo_Button.setContentAreaFilled(false);
+        Ir_Editar_Veiculo_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Ir_Editar_Veiculo_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ir_Editar_Veiculo_ButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Ir_Editar_Veiculo_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 250, 340));
+
         Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Listar_Carros.jpg"))); // NOI18N
         getContentPane().add(Tela_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 670));
 
@@ -167,21 +185,20 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         if (cont > bd_tipo_carro.size() - 1) {
             cont = 0;
         }
-        this.Modelo_Field.setText(bd_tipo_carro.get(cont).getModelo_Carro());
-        this.Placa_Field.setText(bd_tipo_carro.get(cont).getPlaca_Carro());
+        Atualizar_Informacoes();
     }//GEN-LAST:event_ProxCarro_ButtonActionPerformed
 
     private void IrPerfil_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrPerfil_ButtonActionPerformed
         this.setVisible(false);
         Tela_Perfil t_f;
-        
+
         try {
             t_f = new Tela_Perfil(getEmail_Usuario_Logado());
             t_f.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Tela_Listar_Carros.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
 
     }//GEN-LAST:event_IrPerfil_ButtonActionPerformed
 
@@ -190,8 +207,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         if (cont < 0) {
             cont = bd_tipo_carro.size() - 1;
         }
-        this.Modelo_Field.setText(bd_tipo_carro.get(cont).getModelo_Carro());
-        this.Placa_Field.setText(bd_tipo_carro.get(cont).getPlaca_Carro());
+        Atualizar_Informacoes();
     }//GEN-LAST:event_AnteCarro_ButtonActionPerformed
 
     private void IrProdutos_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrProdutos_ButtonActionPerformed
@@ -199,6 +215,25 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         Tela_Listar_Produto t_l_p = new Tela_Listar_Produto(getEmail_Usuario_Logado());
         t_l_p.setVisible(true);
     }//GEN-LAST:event_IrProdutos_ButtonActionPerformed
+
+    private void Ir_Editar_Veiculo_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ir_Editar_Veiculo_ButtonActionPerformed
+
+        try {
+
+            Tela_Editar_Veiculo t_e_v = new Tela_Editar_Veiculo(
+                    this.Placa_Field.getText(),
+                    this.Modelo_Field.getText(),
+                    Float.parseFloat(this.Quilometragem_Field.getText()),
+                    this.Email_Usuario_Logado
+            );
+            this.setVisible(false);
+            t_e_v.setVisible(true);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }//GEN-LAST:event_Ir_Editar_Veiculo_ButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -289,9 +324,11 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
     private javax.swing.JButton IrAdicionarCarro_Button;
     private javax.swing.JButton IrPerfil_Button;
     private javax.swing.JButton IrProdutos_Button;
+    private javax.swing.JButton Ir_Editar_Veiculo_Button;
     private javax.swing.JLabel Modelo_Field;
     private javax.swing.JLabel Placa_Field;
     private javax.swing.JButton ProxCarro_Button;
+    private javax.swing.JLabel Quilometragem_Field;
     private javax.swing.JLabel Tela_Background;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

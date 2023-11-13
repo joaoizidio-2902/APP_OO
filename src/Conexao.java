@@ -44,14 +44,14 @@ public class Conexao {
 
         //rs.next é necessario para ler primeira linha e as proximas
         rs.next();
-        System.out.println("nome: " + rs.getString("nome_usuario"));
+        //System.out.println("nome: " + rs.getString("nome_usuario"));
 
         if (rs.getString("senha_usuario").equals(Senha)) {
-            System.out.println("Senha igual Senha digitada");
+            //System.out.println("Senha igual Senha digitada");
             con.close();
             return true;
         } else {
-            System.out.println("Senha igual Senha digitada");
+            //System.out.println("Senha igual Senha digitada");
             con.close();
             return false;
         }
@@ -116,9 +116,9 @@ public class Conexao {
         while (rs_Resultado.next() != false) {
 
             if (rs_Resultado.getString("veiculo_email_dono").equals(Email_Usuario)) {
-                Tipo_Carro T_C = new Tipo_Carro(rs_Resultado.getString("veiculo_marca"), rs_Resultado.getString("veiculo_placa"), rs_Resultado.getString("veiculo_email_dono"));
+                Tipo_Carro t_c = new Tipo_Carro(rs_Resultado.getString("veiculo_marca"), rs_Resultado.getString("veiculo_placa"), rs_Resultado.getFloat("veiculo_km"), rs_Resultado.getString("veiculo_email_dono"));
 
-                bd_Carros_Do_Usuario.add(T_C);
+                bd_Carros_Do_Usuario.add(t_c);
             }
 
         }
@@ -126,6 +126,29 @@ public class Conexao {
         con.close();
 
         return bd_Carros_Do_Usuario;
+    }
+    
+    protected ArrayList Listar_Produtos() throws SQLException {
+        //Ligar conexao
+        Enable_Connection();
+
+        //Fazer consulta
+        ResultSet rs_Resultado = con.createStatement().executeQuery("select * from produto;");
+
+        ArrayList<Tipo_Produto> bd_Produto = new ArrayList<Tipo_Produto>();
+
+        while (rs_Resultado.next() != false) {
+
+            
+                Tipo_Produto t_p = new Tipo_Produto(rs_Resultado.getString("produto_nome"), rs_Resultado.getString("produto_marca"), rs_Resultado.getString("produto_descricao"), rs_Resultado.getFloat("produto_preco"));
+
+                bd_Produto.add(t_p);
+
+        }
+
+        con.close();
+
+        return bd_Produto;
     }
 
     protected String Tela_Perfil_Detalhes(String Email_Usuario) throws SQLException {
@@ -159,5 +182,34 @@ public class Conexao {
         con.close();
         
         return Nome_Usuario;
+    }
+    
+    protected void Update_Veiculo(String Modelo, String Placa, float KM) throws SQLException {
+        //Ligar conexao
+        Enable_Connection();
+
+        // ResultSet faz a consulta
+        String sql = "update veiculo set veiculo_marca = ?, veiculo_km = ? where veiculo_placa like ?";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, Modelo);
+        pst.setFloat(2, KM);
+        pst.setString(3, Placa);
+        pst.executeUpdate();
+        
+        con.close();
+    }
+    
+    protected void Delete_Veiculo(String Placa) throws SQLException {
+        //Ligar conexao
+        Enable_Connection();
+        
+        String sql = "delete from veiculo where veiculo_placa like ?;";
+        PreparedStatement pst = con.prepareStatement(sql);
+        System.out.println(Placa);
+        pst.setString(1, Placa);
+        System.out.println("aqui");
+        pst.execute();
+        
+        con.close();
     }
 }

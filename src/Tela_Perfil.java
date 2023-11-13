@@ -1,39 +1,48 @@
 
+import java.awt.Image;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+public final class Tela_Perfil extends javax.swing.JFrame {
 
-
-/**
- *
- * @author cg3023087
- */
-public class Tela_Perfil extends javax.swing.JFrame {
     public String Email_Usuario_Logado;
-    
+
     public Tela_Perfil() throws SQLException {
         initComponents();
     }
-    
+
     public Tela_Perfil(String Email_Usuario_Logado) throws SQLException {
         initComponents();
         this.Email_Usuario_Logado = Email_Usuario_Logado;
         Set_Valores_labels();
+
+        try {
+            /*Colocar uma foto no Label*/
+            
+            String caminho_foto = "src\\source\\avatar.jpg";
+            ImageIcon imagem = new ImageIcon(caminho_foto);
+            this.Foto_Perfil.setIcon(imagem);
+
+            Image img = imagem.getImage();
+            Image img_temp = img.getScaledInstance(this.Foto_Perfil.getWidth(), this.Foto_Perfil.getHeight(), java.awt.Image.SCALE_SMOOTH);
+
+            imagem = new ImageIcon(img_temp);
+            this.Foto_Perfil.setIcon(imagem);
+            
+        } catch (Exception e) {
+            System.out.println(e.getCause());
+        }
     }
-    
-    protected void Set_Valores_labels() throws SQLException{
+
+    protected void Set_Valores_labels() throws SQLException {
         this.Email_Label.setText(this.Email_Usuario_Logado);
-        
+
         Conexao con = new Conexao();
         this.Nome_Label.setText(con.Get_Nome_Usuario(this.Email_Usuario_Logado));
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -66,10 +75,10 @@ public class Tela_Perfil extends javax.swing.JFrame {
         getContentPane().add(AlterarS_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 130, 40));
 
         Email_Label.setText("email");
-        getContentPane().add(Email_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 120, 30));
+        getContentPane().add(Email_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 120, 30));
 
         Nome_Label.setText("nome");
-        getContentPane().add(Nome_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 120, 30));
+        getContentPane().add(Nome_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 120, 30));
 
         EcerrarSessão_Button.setBorderPainted(false);
         EcerrarSessão_Button.setContentAreaFilled(false);
@@ -91,8 +100,6 @@ public class Tela_Perfil extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Voltar_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 50, 50));
-
-        Foto_Perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/avatar.jpg"))); // NOI18N
         getContentPane().add(Foto_Perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 140, 140));
 
         Tela_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Cadastro_Perfil.jpg"))); // NOI18N
@@ -110,13 +117,15 @@ public class Tela_Perfil extends javax.swing.JFrame {
     private void EditarP_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarP_ButtonActionPerformed
         this.setVisible(false);
         Tela_Cadastro_Usuario t_c_u;
+        
         try {
             t_c_u = new Tela_Cadastro_Usuario(Email_Usuario_Logado);
             t_c_u.setVisible(true);
+            
         } catch (SQLException ex) {
             Logger.getLogger(Tela_Perfil.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_EditarP_ButtonActionPerformed
 
     private void EcerrarSessão_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EcerrarSessão_ButtonActionPerformed
