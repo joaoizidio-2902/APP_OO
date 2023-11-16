@@ -96,4 +96,4 @@ VALUES
 ('Pastilhas de Freio', 'Pastilhas de freio dianteiras', 35.50, 'Ferodo', 3);
 
 update veiculo set veiculo_marca = "Fiat UNO", veiculo_km = 654 where veiculo_placa like "ABC-1234";
-
+delete from veiculo where veiculo_placa like "FEP-5C50";
