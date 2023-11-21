@@ -14,5 +14,9 @@ public class APP_OO {
         t_l.setVisible(true);
 
     }
+    
+    public int SomarNum(int x1, int x2){
+        return x1 + x2;
+    }
 
 }
