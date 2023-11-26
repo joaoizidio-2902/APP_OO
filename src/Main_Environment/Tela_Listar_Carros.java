@@ -1,3 +1,5 @@
+package Main_Environment;
+
 
 import java.awt.Image;
 import java.io.BufferedReader;
@@ -10,14 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-/**
- *
- * @author cg3023087
- */
+
 public class Tela_Listar_Carros extends javax.swing.JFrame {
 
     private String Email_Usuario_Logado;
