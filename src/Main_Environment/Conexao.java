@@ -60,18 +60,16 @@ public class Conexao {
 
     }
 
-    protected String Create_User(String Nome_Usuario, String Email_Usuario, String Senha_Usuario) throws SQLException {
+    protected boolean Create_User(String Nome_Usuario, String Email_Usuario, String Senha_Usuario) throws SQLException {
         //Ligar conexao
         Enable_Connection();
-
-        // ResultSet faz o insert
+        
         String sql = "insert into usuario(nome_usuario, email_usuario, senha_usuario) values(?, ?, ?)";
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setString(1, Nome_Usuario);
         pst.setString(2, Email_Usuario);
         pst.setString(3, Senha_Usuario);
-        pst.execute();
-        
+        boolean resultado = pst.execute();
         /*
         Ver o conteudo que tem no pst
         
@@ -82,11 +80,8 @@ public class Conexao {
         System.out.println(test[5]);
         */
         
-        
-        
-        
         con.close();
-        return pst.toString();
+        return resultado;
     }
 
     protected void Insert_Into_Table_Veiculo(String Marca, String Placa, float KM, String Email_Usuario) throws SQLException {
