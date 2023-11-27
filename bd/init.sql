@@ -14,6 +14,11 @@ select*from oficina;
 select*from veiculo;
 select*from relacao;
 
+
+
+create user 'admin'@'localhost' identified by '123456';
+grant all privileges on olheoleo.* to 'admin'@'localhost';
+
 CREATE TABLE Usuario (
 id_usuario INT PRIMARY KEY auto_increment,
 nome_usuario VARCHAR(255),
