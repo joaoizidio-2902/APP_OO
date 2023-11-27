@@ -1,3 +1,5 @@
+package Main_Environment;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +19,9 @@ public class Conexao {
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
+
             String url = "jdbc:mysql://localhost:3307/appolheoleo?useSSL=false";
+
             String user = "admin";
             String password = "123456";
 
@@ -35,7 +39,7 @@ public class Conexao {
         }
     }
 
-    public boolean Auth_Login(String Email, String Senha) throws SQLException {
+    protected boolean Auth_Login(String Email, String Senha) throws SQLException {
         //Ligar conexao
         Enable_Connection();
 
@@ -58,7 +62,7 @@ public class Conexao {
 
     }
 
-    protected void Create_User(String Nome_Usuario, String Email_Usuario, String Senha_Usuario) throws SQLException {
+    protected String Create_User(String Nome_Usuario, String Email_Usuario, String Senha_Usuario) throws SQLException {
         //Ligar conexao
         Enable_Connection();
 
@@ -69,8 +73,22 @@ public class Conexao {
         pst.setString(2, Email_Usuario);
         pst.setString(3, Senha_Usuario);
         pst.execute();
-
+        
+        /*
+        Ver o conteudo que tem no pst
+        
+        String[] test = new String[6];
+        test = pst.toString().split("\'");
+        System.out.println(test[1]);
+        System.out.println(test[3]);
+        System.out.println(test[5]);
+        */
+        
+        
+        
+        
         con.close();
+        return pst.toString();
     }
 
     protected void Insert_Into_Table_Veiculo(String Marca, String Placa, float KM, String Email_Usuario) throws SQLException {

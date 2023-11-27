@@ -1,3 +1,5 @@
+package Main_Environment;
+
 
 import java.awt.Image;
 import java.sql.SQLException;
@@ -103,7 +105,6 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
         getContentPane().add(Email_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 280, 30));
 
         Password_Field.setBackground(new java.awt.Color(245, 245, 245));
-        Password_Field.setPreferredSize(new java.awt.Dimension(64, 22));
         Password_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Password_FieldActionPerformed(evt);
