@@ -5,6 +5,9 @@
 package Testes_Unitarios;
 
 import Main_Environment.*;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -36,17 +39,52 @@ public class teste {
     @After
     public void tearDown() {
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
     
     @Test
     public void somarNumero() {
         Conexao con = new Conexao();
         APP_OO app = new APP_OO();
-        assertEquals(1, app.SomarNum(0, 0));
+        assertEquals(0, app.SomarNum(0, 0));
+    }
+    
+    @Test
+    public void testTrue_authLogin() throws SQLException {
+        Conexao con = new Conexao();
+        assertEquals(true, con.authLogin("joao@email.com", "senha123"));
+    }
+    
+    @Test
+    public void testFalseEmail_authLogin() throws SQLException {
+        Conexao con = new Conexao();
+        assertEquals(false, con.authLogin("joao@emil.com", "senha123"));
+    }
+    
+    @Test
+    public void testFalseSenha_authLogin() throws SQLException {
+        Conexao con = new Conexao();
+        assertEquals(false, con.authLogin("joao@email.com", "senha13"));
+    }
+    
+    @Test
+    public void testTrue_createUser() throws SQLException {
+        Conexao con = new Conexao();
+        Date dataAtual = new Date();
+        String hora = new SimpleDateFormat("HH:mm:ss").format(dataAtual);
+        assertEquals(false, con.createUser("usuario" + hora, "joao"+ hora + "@email.com", "senha13"));
+    }
+    
+    @Test
+    public void testFalse_createUser() throws SQLException {
+        Conexao con = new Conexao();
+        Date dataAtual = new Date();
+        assertEquals(true, con.createUser("usuario", "joao@email.com", "senha13"));
+    }
+    
+    @Test
+    public void testTrue_insertIntoTableProduct() throws SQLException {
+        Conexao con = new Conexao();
+        Date dataAtual = new Date();
+        String hora = new SimpleDateFormat("HH:mm:ss").format(dataAtual);
+        assertEquals(false, con.insertIntoTableProduct("nomeProduto" + hora, "marcaProduto" + hora, 2, "descricaoProduto" + hora, "joao@email.com"));
     }
 }

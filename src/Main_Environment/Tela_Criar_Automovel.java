@@ -9,14 +9,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-/**
- *
- * @author cg3023087
- */
+
 public class Tela_Criar_Automovel extends javax.swing.JFrame {
 
     private ArrayList<Tipo_Carro> Banco_Dados_Carro = new ArrayList<Tipo_Carro>();
@@ -31,17 +24,17 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
         this.Email_Usuario_Logado = Email_Usuario_Logado;
     }
 
-    private void escrever_arquivo() throws IOException {
+    /*private void escrever_arquivo() throws IOException {
 
         String arquivo = "BancoDeDadosCarros.txt";
-        BufferedWriter buffWrite = new BufferedWriter(new FileWriter(arquivo, /*StandardCharsets.ISO_8859_1,*/ true));
-        for (int i = 0; i < this.Banco_Dados_Carro.size(); i++) {
+        BufferedWriter buffWrite = new BufferedWriter(new FileWriter(arquivo, /*StandardCharsets.ISO_8859_1,*/ //true));
+        /*for (int i = 0; i < this.Banco_Dados_Carro.size(); i++) {
             String dados = this.Banco_Dados_Carro.get(i).getModelo_Carro() + ";" + this.Banco_Dados_Carro.get(i).getPlaca_Carro() + ";" + this.Banco_Dados_Carro.get(i).getQuilometragem_Carro() + ";" + this.Banco_Dados_Carro.get(i).getDono_Carro();
             buffWrite.append(dados + "\n");
         }
 
         buffWrite.close();
-    }
+    }*/
 
     public String getEmail_Usuario_Logado() {
         return Email_Usuario_Logado;
@@ -51,7 +44,7 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CadastrarA_Button = new javax.swing.JButton();
+        Cadastrar_Button = new javax.swing.JButton();
         Modelo_Field = new javax.swing.JTextField();
         Placa_Field = new javax.swing.JTextField();
         Quilometragem_Field = new javax.swing.JTextField();
@@ -61,15 +54,15 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CadastrarA_Button.setBorderPainted(false);
-        CadastrarA_Button.setContentAreaFilled(false);
-        CadastrarA_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        CadastrarA_Button.addActionListener(new java.awt.event.ActionListener() {
+        Cadastrar_Button.setBorderPainted(false);
+        Cadastrar_Button.setContentAreaFilled(false);
+        Cadastrar_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Cadastrar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CadastrarA_ButtonActionPerformed(evt);
+                Cadastrar_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CadastrarA_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 370, 110));
+        getContentPane().add(Cadastrar_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 370, 110));
 
         Modelo_Field.setBackground(new java.awt.Color(245, 245, 245));
         Modelo_Field.setDisabledTextColor(new java.awt.Color(245, 245, 245));
@@ -99,13 +92,13 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CadastrarA_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarA_ButtonActionPerformed
+    private void Cadastrar_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cadastrar_ButtonActionPerformed
         Conexao con = new Conexao();
         
         if (!this.Modelo_Field.getText().equals("") && !this.Placa_Field.getText().equals("") && !this.Quilometragem_Field.getText().equals("")) {
 
             try {
-                con.Insert_Into_Table_Veiculo(this.Modelo_Field.getText(), this.Placa_Field.getText(), Float.parseFloat(this.Quilometragem_Field.getText()), this.getEmail_Usuario_Logado());
+                con.insertIntoTableVeiculo(this.Modelo_Field.getText(), this.Placa_Field.getText(), Float.parseFloat(this.Quilometragem_Field.getText()), this.getEmail_Usuario_Logado());
                 
                 //Desligar Tela                                                                           
                 this.setVisible(false);
@@ -120,7 +113,7 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
             System.out.println("falta termos");
         }
 
-    }//GEN-LAST:event_CadastrarA_ButtonActionPerformed
+    }//GEN-LAST:event_Cadastrar_ButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
@@ -172,7 +165,7 @@ public class Tela_Criar_Automovel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CadastrarA_Button;
+    private javax.swing.JButton Cadastrar_Button;
     private javax.swing.JTextField Modelo_Field;
     private javax.swing.JTextField Placa_Field;
     private javax.swing.JTextField Quilometragem_Field;

@@ -19,15 +19,15 @@ public class Tela_Listar_Produto extends javax.swing.JFrame {
 
         try {
             Conexao con = new Conexao();
-            this.bd_tipo_produtos = con.Listar_Produtos();
-            Atualizar_Informacoes();
+            this.bd_tipo_produtos = con.listProduct();
+            DetailsUpdate();
             
         } catch (Exception e) {
             System.out.println(e.getCause());
         }
     }
 
-    public void Atualizar_Informacoes() {
+    public void DetailsUpdate() {
         //Colocar os valores iniciais no campos de produto_nome, produto_marca, produto_preco, produto_descricao
         this.Nome_Label.setText(bd_tipo_produtos.get(cont).getNome_Produto());
         this.Marca_Label.setText(bd_tipo_produtos.get(cont).getMarca_Produto());
@@ -132,7 +132,7 @@ public class Tela_Listar_Produto extends javax.swing.JFrame {
         if (cont > bd_tipo_produtos.size() - 1) {
             cont = 0;
         }
-        Atualizar_Informacoes();
+        DetailsUpdate();
     }//GEN-LAST:event_Prox_Prod_ButtonActionPerformed
 
     private void Ante_Prod_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ante_Prod_ButtonActionPerformed
@@ -140,7 +140,7 @@ public class Tela_Listar_Produto extends javax.swing.JFrame {
         if (cont < 0) {
             cont = bd_tipo_produtos.size() - 1;
         }
-        Atualizar_Informacoes();
+        DetailsUpdate();
     }//GEN-LAST:event_Ante_Prod_ButtonActionPerformed
 
     /**

@@ -1,6 +1,5 @@
 package Main_Environment;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,21 +14,22 @@ public class Conexao {
     public Conexao() {
     }
 
-    private void Enable_Connection() {
+    private void enableConnection() {
         try {
-
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3307/olheoleoteste?useSSL=false";
+
+            String url = "jdbc:mysql://localhost:3307/olheoleo?useSSL=false";
+
             String user = "admin";
             String password = "123456";
 
             con = DriverManager.getConnection(url, user, password);
 
             /*ResultSet rs = con.createStatement().executeQuery("select * from usuario");
-            
-            while(rs.next()){
-                System.out.println("nome: " + rs.getString("nome_usuario"));
-            }*/
+        
+        while(rs.next()){
+            System.out.println("nome: " + rs.getString("nome_usuario"));
+        }*/
         } catch (ClassNotFoundException ex) {
             System.out.println("Driver nao encontrado");
         } catch (SQLException ex) {
@@ -37,190 +37,203 @@ public class Conexao {
         }
     }
 
-    protected boolean Auth_Login(String Email, String Senha) throws SQLException {
+    public boolean authLogin(String email, String senha) throws SQLException {
         //Ligar conexao
-        Enable_Connection();
+        enableConnection();
 
-        // ResultSet faz a consulta
-        ResultSet rs = con.createStatement().executeQuery("select * from usuario where email_usuario like '" + Email + "'");
+        try {
+            // ResultSet faz a consulta
+            ResultSet rs = con.createStatement().executeQuery("select * from usuario where email_usuario like '" + email + "'");
 
-        //rs.next é necessario para ler primeira linha e as proximas
-        rs.next();
-        //System.out.println("nome: " + rs.getString("nome_usuario"));
+            //rs.next é necessario para ler primeira linha e as proximas
+            rs.next();
+            //System.out.println("nome: " + rs.getString("nome_usuario"));
 
-        if (rs.getString("senha_usuario").equals(Senha)) {
-            //System.out.println("Senha igual Senha digitada");
-            con.close();
-            return true;
-        } else {
-            //System.out.println("Senha igual Senha digitada");
-            con.close();
+            if (rs.getString("senha_usuario").equals(senha)) {
+                //System.out.println("Senha igual Senha digitada");
+                con.close();
+                return true;
+            } else {
+                //System.out.println("Senha diferente Senha digitada");
+                con.close();
+                return false;
+            }
+        } catch (Exception e) {
             return false;
         }
 
     }
 
-    protected boolean Create_User(String Nome_Usuario, String Email_Usuario, String Senha_Usuario) throws SQLException {
+    public boolean createUser(String nomeUsuario, String emailUsuario, String senhaUsuario) throws SQLException {
         //Ligar conexao
-        Enable_Connection();
-        
-        String sql = "insert into usuario(nome_usuario, email_usuario, senha_usuario) values(?, ?, ?)";
-        PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, Nome_Usuario);
-        pst.setString(2, Email_Usuario);
-        pst.setString(3, Senha_Usuario);
-        boolean resultado = pst.execute();
-        /*
-        Ver o conteudo que tem no pst
-        
-        String[] test = new String[6];
-        test = pst.toString().split("\'");
-        System.out.println(test[1]);
-        System.out.println(test[3]);
-        System.out.println(test[5]);
-        */
-        
-        con.close();
-        return resultado;
-    }
+        enableConnection();
 
-    protected void Insert_Into_Table_Veiculo(String Marca, String Placa, float KM, String Email_Usuario) throws SQLException {
-        //Ligar conexao
-        Enable_Connection();
-
-        // ResultSet faz a consulta
-        String sql = "insert into veiculo(veiculo_marca, veiculo_placa, veiculo_km, veiculo_email_dono) values(?, ?, ?, ?)";
-        PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, Marca);
-        pst.setString(2, Placa);
-        pst.setFloat(3, KM);
-        pst.setString(4, Email_Usuario);
-        pst.execute();
-
-        con.close();
-    }
+        try {
+            String sql = "insert into usuario(nome_usuario, email_usuario, senha_usuario) values(?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, nomeUsuario);
+            pst.setString(2, emailUsuario);
+            pst.setString(3, senhaUsuario);
+            boolean flag = pst.execute();
+            /*
+            Ver o conteudo que tem no pst
     
-    protected void Insert_Into_Table_Produto(String Nome, String Marca, float Preco, String Descricao, String Email_Usuario) throws SQLException {
-        //Ligar conexao
-        Enable_Connection();
+            String[] test = new String[6];
+            test = pst.toString().split("\'");
+            System.out.println(test[1]);
+            System.out.println(test[3]);
+            System.out.println(test[5]);
+             */
+
+            con.close();
+            return flag;
+        } catch (Exception e) {
+            con.close();
+            return true;
+        }
+
+    }
+
+    public boolean insertIntoTableProduct(String nome, String marca, float preco, String descricao, String emailUsuario) throws SQLException {
+        // Ligar conexão
+        enableConnection();
 
         // ResultSet faz a consulta
         String sql = "insert into produto(produto_nome, produto_marca, produto_preco, produto_descricao) values(?, ?, ?, ?)";
         PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, Nome);
-        pst.setString(2, Marca);
-        pst.setFloat(3, Preco);
-        pst.setString(4, Descricao);
-        pst.execute();
+        pst.setString(1, nome);
+        pst.setString(2, marca);
+        pst.setFloat(3, preco);
+        pst.setString(4, descricao);
+        boolean flag = pst.execute();
 
         con.close();
+
+        return flag;
     }
 
-    protected ArrayList Listar_Carros(String Email_Usuario) throws SQLException {
+    public boolean insertIntoTableVeiculo(String marca, String placa, float km, String emailUsuario) throws SQLException {
         //Ligar conexao
-        Enable_Connection();
+        enableConnection();
 
-        ResultSet rs_Resultado = con.createStatement().executeQuery("select * from veiculo where veiculo_email_dono like '" + Email_Usuario + "';");
+        // ResultSet faz a consulta
+        String sql = "insert into veiculo(veiculo_marca, veiculo_placa, veiculo_km, veiculo_email_dono) values(?, ?, ?, ?)";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, marca);
+        pst.setString(2, placa);
+        pst.setFloat(3, km);
+        pst.setString(4, emailUsuario);
+        boolean flag = pst.execute();
 
-        ArrayList<Tipo_Carro> bd_Carros_Do_Usuario = new ArrayList<Tipo_Carro>();
+        con.close();
 
-        while (rs_Resultado.next() != false) {
+        return flag;
+    }
 
-            if (rs_Resultado.getString("veiculo_email_dono").equals(Email_Usuario)) {
-                Tipo_Carro t_c = new Tipo_Carro(rs_Resultado.getString("veiculo_marca"), rs_Resultado.getString("veiculo_placa"), rs_Resultado.getFloat("veiculo_km"), rs_Resultado.getString("veiculo_email_dono"));
+    public ArrayList listCars(String emailUsuario) throws SQLException {
+        // Ligar conexão
+        enableConnection();
 
-                bd_Carros_Do_Usuario.add(t_c);
+        ResultSet rsResultado = con.createStatement().executeQuery("select * from veiculo where veiculo_email_dono like '" + emailUsuario + "';");
+
+        ArrayList<Tipo_Carro> bdCarrosDoUsuario = new ArrayList<>();
+
+        while (rsResultado.next() != false) {
+
+            if (rsResultado.getString("veiculo_email_dono").equals(emailUsuario)) {
+                Tipo_Carro tc = new Tipo_Carro(rsResultado.getString("veiculo_marca"), rsResultado.getString("veiculo_placa"), rsResultado.getFloat("veiculo_km"), rsResultado.getString("veiculo_email_dono"));
+
+                bdCarrosDoUsuario.add(tc);
             }
 
         }
 
         con.close();
 
-        return bd_Carros_Do_Usuario;
+        return bdCarrosDoUsuario;
     }
-    
-    protected ArrayList Listar_Produtos() throws SQLException {
-        //Ligar conexao
-        Enable_Connection();
 
-        //Fazer consulta
-        ResultSet rs_Resultado = con.createStatement().executeQuery("select * from produto;");
+    public ArrayList listProduct() throws SQLException {
+        // Ligar conexão
+        enableConnection();
 
-        ArrayList<Tipo_Produto> bd_Produto = new ArrayList<Tipo_Produto>();
+        // Fazer consulta
+        ResultSet rsResultado = con.createStatement().executeQuery("select * from produto;");
 
-        while (rs_Resultado.next() != false) {
+        ArrayList<Tipo_Produto> bdProduto = new ArrayList<>();
 
-            
-                Tipo_Produto t_p = new Tipo_Produto(rs_Resultado.getString("produto_nome"), rs_Resultado.getString("produto_marca"), rs_Resultado.getString("produto_descricao"), rs_Resultado.getFloat("produto_preco"));
+        while (rsResultado.next() != false) {
+            Tipo_Produto tp = new Tipo_Produto(rsResultado.getString("produto_nome"), rsResultado.getString("produto_marca"), rsResultado.getString("produto_descricao"), rsResultado.getFloat("produto_preco"));
 
-                bd_Produto.add(t_p);
-
+            bdProduto.add(tp);
         }
 
         con.close();
 
-        return bd_Produto;
+        return bdProduto;
     }
 
-    protected String Tela_Perfil_Detalhes(String Email_Usuario) throws SQLException {
-        //Ligar conexao
-        Enable_Connection();
+    public String screenDetailsPerfil(String emailUsuario) throws SQLException {
+        // Ligar conexão
+        enableConnection();
 
-        //Pegar Dados
-        ResultSet rs_Resultado = con.createStatement().executeQuery("select * from usuario where email_usuario like '" + Email_Usuario + "';");
-        rs_Resultado.next();
+        // Pegar Dados
+        ResultSet rsResultado = con.createStatement().executeQuery("select * from usuario where email_usuario like '" + emailUsuario + "';");
+        rsResultado.next();
 
-        String Nome_Usuario = rs_Resultado.getString("nome_usuario");
-        String Senha_Usuario = rs_Resultado.getString("senha_usuario");
-
+        String nomeUsuario = rsResultado.getString("nome_usuario");
+        String senhaUsuario = rsResultado.getString("senha_usuario");
 
         con.close();
-        
-        return Nome_Usuario + ";" + Senha_Usuario;
+
+        return nomeUsuario + ";" + senhaUsuario;
     }
-    
-    protected String Get_Nome_Usuario(String Email_Usuario) throws SQLException {
-        //Ligar conexao
-        Enable_Connection();
 
-        //Pegar Dados
-        ResultSet rs_Resultado = con.createStatement().executeQuery("select * from usuario where email_usuario like '" + Email_Usuario + "';");
-        rs_Resultado.next();
+    public String getUserName(String emailUsuario) throws SQLException {
+        // Ligar conexão
+        enableConnection();
 
-        String Nome_Usuario = rs_Resultado.getString("nome_usuario");
+        // Pegar Dados
+        ResultSet rsResultado = con.createStatement().executeQuery("select * from usuario where email_usuario like '" + emailUsuario + "';");
+        rsResultado.next();
 
+        String nomeUsuario = rsResultado.getString("nome_usuario");
 
         con.close();
-        
-        return Nome_Usuario;
+
+        return nomeUsuario;
     }
-    
-    protected void Update_Veiculo(String Modelo, String Placa, float KM) throws SQLException {
-        //Ligar conexao
-        Enable_Connection();
+
+    public int updateVeiculo(String modelo, String placa, float km) throws SQLException {
+        // Ligar conexão
+        enableConnection();
 
         // ResultSet faz a consulta
         String sql = "update veiculo set veiculo_marca = ?, veiculo_km = ? where veiculo_placa like ?";
         PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, Modelo);
-        pst.setFloat(2, KM);
-        pst.setString(3, Placa);
-        pst.executeUpdate();
-        
+        pst.setString(1, modelo);
+        pst.setFloat(2, km);
+        pst.setString(3, placa);
+        int flag = pst.executeUpdate();
+
         con.close();
+
+        return flag;
     }
-    
-    protected void Delete_Veiculo(String Placa) throws SQLException {
-        //Ligar conexao
-        Enable_Connection();
-        
+
+    public boolean deleteVeiculo(String placa) throws SQLException {
+        // Ligar conexão
+        enableConnection();
+
         String sql = "delete from veiculo where veiculo_placa like ?;";
         PreparedStatement pst = con.prepareStatement(sql);
-        System.out.println(Placa);
-        pst.setString(1, Placa);
+        System.out.println(placa);
+        pst.setString(1, placa);
         System.out.println("aqui");
-        pst.execute();
-        
+        boolean flag = pst.execute();
+
         con.close();
+
+        return flag;
     }
 }

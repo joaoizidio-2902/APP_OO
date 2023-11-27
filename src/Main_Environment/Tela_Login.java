@@ -18,9 +18,6 @@ import java.util.logging.Logger;
  */
 public class Tela_Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tela_Login
-     */
     public Tela_Login() {
         initComponents();
     }
@@ -31,10 +28,10 @@ public class Tela_Login extends javax.swing.JFrame {
 
         Email_Field = new javax.swing.JTextField();
         Password_Field = new javax.swing.JPasswordField();
-        EsqueceuC_Button = new javax.swing.JButton();
-        CriarC_Button = new javax.swing.JButton();
+        Esqueceu_Conta_Button = new javax.swing.JButton();
+        Criar_Conta_Button = new javax.swing.JButton();
         Login_Button = new javax.swing.JButton();
-        EsqueceuS_Button = new javax.swing.JButton();
+        Esqueceu_Senha_Button = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,25 +58,25 @@ public class Tela_Login extends javax.swing.JFrame {
         });
         getContentPane().add(Password_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 270, 30));
 
-        EsqueceuC_Button.setBorderPainted(false);
-        EsqueceuC_Button.setContentAreaFilled(false);
-        EsqueceuC_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        EsqueceuC_Button.addActionListener(new java.awt.event.ActionListener() {
+        Esqueceu_Conta_Button.setBorderPainted(false);
+        Esqueceu_Conta_Button.setContentAreaFilled(false);
+        Esqueceu_Conta_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Esqueceu_Conta_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EsqueceuC_ButtonActionPerformed(evt);
+                Esqueceu_Conta_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(EsqueceuC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 130, 20));
+        getContentPane().add(Esqueceu_Conta_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 130, 20));
 
-        CriarC_Button.setBorderPainted(false);
-        CriarC_Button.setContentAreaFilled(false);
-        CriarC_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        CriarC_Button.addActionListener(new java.awt.event.ActionListener() {
+        Criar_Conta_Button.setBorderPainted(false);
+        Criar_Conta_Button.setContentAreaFilled(false);
+        Criar_Conta_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Criar_Conta_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CriarC_ButtonActionPerformed(evt);
+                Criar_Conta_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CriarC_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 90, 20));
+        getContentPane().add(Criar_Conta_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 90, 20));
 
         Login_Button.setBorderPainted(false);
         Login_Button.setContentAreaFilled(false);
@@ -91,15 +88,15 @@ public class Tela_Login extends javax.swing.JFrame {
         });
         getContentPane().add(Login_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 140, 50));
 
-        EsqueceuS_Button.setBorderPainted(false);
-        EsqueceuS_Button.setContentAreaFilled(false);
-        EsqueceuS_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        EsqueceuS_Button.addActionListener(new java.awt.event.ActionListener() {
+        Esqueceu_Senha_Button.setBorderPainted(false);
+        Esqueceu_Senha_Button.setContentAreaFilled(false);
+        Esqueceu_Senha_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Esqueceu_Senha_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EsqueceuS_ButtonActionPerformed(evt);
+                Esqueceu_Senha_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(EsqueceuS_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 150, 20));
+        getContentPane().add(Esqueceu_Senha_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, 180, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/Tela_Login.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -114,26 +111,26 @@ public class Tela_Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Email_FieldActionPerformed
 
-    private void CriarC_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CriarC_ButtonActionPerformed
+    private void Criar_Conta_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Criar_Conta_ButtonActionPerformed
         this.setVisible(false);
         Tela_Cadastro_Usuario t_c_a = new Tela_Cadastro_Usuario();
         t_c_a.setVisible(true);
 
-    }//GEN-LAST:event_CriarC_ButtonActionPerformed
+    }//GEN-LAST:event_Criar_Conta_ButtonActionPerformed
 
     private void Password_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Password_FieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Password_FieldActionPerformed
 
-    private void EsqueceuS_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EsqueceuS_ButtonActionPerformed
+    private void Esqueceu_Senha_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Esqueceu_Senha_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EsqueceuS_ButtonActionPerformed
+    }//GEN-LAST:event_Esqueceu_Senha_ButtonActionPerformed
 
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
         Conexao con = new Conexao();
         try {
-            con.Listar_Carros("joao@email.com");
-            if (con.Auth_Login(this.Email_Field.getText(), this.Password_Field.getText()) == true) {
+            con.listCars("joao@email.com");
+            if (con.authLogin(this.Email_Field.getText(), this.Password_Field.getText()) == true) {
                 this.setVisible(false);
                 Tela_Listar_Carros t_l_c = new Tela_Listar_Carros(this.Email_Field.getText());
                 t_l_c.setVisible(true);
@@ -161,9 +158,9 @@ public class Tela_Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_Login_ButtonActionPerformed
 
-    private void EsqueceuC_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EsqueceuC_ButtonActionPerformed
+    private void Esqueceu_Conta_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Esqueceu_Conta_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EsqueceuC_ButtonActionPerformed
+    }//GEN-LAST:event_Esqueceu_Conta_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,10 +199,10 @@ public class Tela_Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CriarC_Button;
+    private javax.swing.JButton Criar_Conta_Button;
     private javax.swing.JTextField Email_Field;
-    private javax.swing.JButton EsqueceuC_Button;
-    private javax.swing.JButton EsqueceuS_Button;
+    private javax.swing.JButton Esqueceu_Conta_Button;
+    private javax.swing.JButton Esqueceu_Senha_Button;
     private javax.swing.JButton Login_Button;
     private javax.swing.JPasswordField Password_Field;
     private javax.swing.JLabel jLabel1;

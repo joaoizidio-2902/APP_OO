@@ -42,14 +42,14 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
 
             //Fazer conexao com banco de dados
             Conexao con = new Conexao();
-            this.bd_tipo_carro = con.Listar_Carros(Email_Usuario_Logado);
-            Atualizar_Informacoes();
+            this.bd_tipo_carro = con.listCars(Email_Usuario_Logado);
+            DetailsUpdate();
 
         } catch (Exception e) {
         }
     }
 
-    public void Atualizar_Informacoes() {
+    public void DetailsUpdate() {
         //Colocar os valores iniciais no campos de placa e modelo
         this.Modelo_Field.setText(bd_tipo_carro.get(cont).getModelo_Carro());
         this.Placa_Field.setText(bd_tipo_carro.get(cont).getPlaca_Carro());
@@ -180,7 +180,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         if (cont > bd_tipo_carro.size() - 1) {
             cont = 0;
         }
-        Atualizar_Informacoes();
+        DetailsUpdate();
     }//GEN-LAST:event_ProxCarro_ButtonActionPerformed
 
     private void IrPerfil_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrPerfil_ButtonActionPerformed
@@ -202,7 +202,7 @@ public class Tela_Listar_Carros extends javax.swing.JFrame {
         if (cont < 0) {
             cont = bd_tipo_carro.size() - 1;
         }
-        Atualizar_Informacoes();
+        DetailsUpdate();
     }//GEN-LAST:event_AnteCarro_ButtonActionPerformed
 
     private void IrProdutos_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrProdutos_ButtonActionPerformed
