@@ -22,7 +22,7 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
         initComponents();
         
         Conexao con = new Conexao();
-        String Nome_Senha_Junto = con.Tela_Perfil_Detalhes(Email_Usario_Logado);
+        String Nome_Senha_Junto = con.screenDetailsPerfil(Email_Usario_Logado);
         
         String dados[] = new String[2];
         dados = Nome_Senha_Junto.split(";");
@@ -134,7 +134,7 @@ public class Tela_Cadastro_Usuario extends javax.swing.JFrame {
         if (this.Password_Field.getText().equals(this.Confirm_Password_Field.getText())) {
             Conexao con = new Conexao();
             try {
-                con.Create_User(this.Name_Field.getText(), this.Email_Field.getText(), this.Password_Field.getText());
+                con.createUser(this.Name_Field.getText(), this.Email_Field.getText(), this.Password_Field.getText());
                 
                 // Fechar janela
                 this.setVisible(false);

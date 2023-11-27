@@ -12,14 +12,14 @@ public class Tela_Editar_Veiculo extends javax.swing.JFrame {
         setVeiculo_Modelo(Veiculo_Modelo);
         setVeiculo_Quilometragem(Veiculo_Quilometragem);
         setEmail_Usuario_Logado(Email_Usuario_Logado);
-        Atualizar_Informacoes();
+        DetailsUpdate();
     }
     
     public Tela_Editar_Veiculo() {
         initComponents();
     }
     
-    public void Atualizar_Informacoes() {
+    public void DetailsUpdate() {
         //Colocar os valores iniciais no campos de placa e modelo
         this.Placa_Field.setText(this.Veiculo_Placa);
         this.Placa_Field.setEditable(false);
@@ -139,7 +139,7 @@ public class Tela_Editar_Veiculo extends javax.swing.JFrame {
         Conexao con = new Conexao();
         
         try {
-            con.Update_Veiculo(this.Modelo_Field.getText(), this.Placa_Field.getText(), getVeiculo_Quilometragem());
+            con.updateVeiculo(this.Modelo_Field.getText(), this.Placa_Field.getText(), getVeiculo_Quilometragem());
             
         } catch (Exception e) {
             System.out.println(e.getCause());
@@ -154,7 +154,7 @@ public class Tela_Editar_Veiculo extends javax.swing.JFrame {
         Conexao con = new Conexao();
         
         try {
-            con.Delete_Veiculo(this.Placa_Field.getText());
+            con.deleteVeiculo(this.Placa_Field.getText());
             
         } catch (Exception e) {
             System.out.println(e.getMessage());
