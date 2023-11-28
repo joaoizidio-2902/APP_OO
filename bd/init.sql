@@ -1,6 +1,6 @@
 drop database olheoleo;
-CREATE DATABASE OlheOleo;
-use OlheOleo;
+CREATE DATABASE olheoleo;
+use olheoleo;
 
 drop table Veiculo;
 drop table Usuario;
