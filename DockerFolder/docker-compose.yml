@@ -1,14 +1,17 @@
-version: "3"
+version: "3.6"
 service:
   db: 
-    image: mysql
+    image: mysql:8.2
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: olheoleo
       MYSQL_USER: admin
-      MYSQL_PASSWORD: '123456'
-    volume: ./init:/docker-entrypoint-initdb.d
+      MYSQL_PASSWORD: 123456
+    volume: 
+      - "./init:/docker-entrypoint-initdb.d"
+    ports: 
+      - 3306:3306
   
   adminer:
     image: adminer
