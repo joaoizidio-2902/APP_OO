@@ -67,7 +67,7 @@ VALUES
 ( 'Prata', 'Toyota', 'DEF-9012', 'I4', 60000, '2023-03-25', 'joao@email.com');
 
 -- Inserir dados na tabela Oficina
-INSERT INTO Oficina ( nome_oficina, endereco_oficina)
+INSERT INTO Oficina (nome_oficina, endereco_oficina)
 VALUES
 ('Oficina A', 'Rua A, 123'),
 ( 'Oficina B', 'Avenida B, 456'),
