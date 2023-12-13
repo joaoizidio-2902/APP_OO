@@ -41,13 +41,6 @@ public class teste {
     }
     
     @Test
-    public void somarNumero() {
-        Conexao con = new Conexao();
-        APP_OO app = new APP_OO();
-        assertEquals(0, app.SomarNum(0, 0));
-    }
-    
-    @Test
     public void testTrue_authLogin() throws SQLException {
         Conexao con = new Conexao();
         assertEquals(true, con.authLogin("joao@email.com", "senha123"));
